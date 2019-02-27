@@ -6,9 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SERV-4558 - DAI Freezing in IE 11</title>
   <script src="//content.jwplatform.com/libraries/eWWnG67f.js"></script>
+  <style>
+    .container {
+      max-width: 50vw;
+    }
+  </style>
 </head>
 <body>
-  <div id="playerElement"></div>
+  <div class="container">
+    <div id="playerElement"></div>
+  </div>
   <script>
     var playerInstance = jwplayer('playerElement');
     var setupLivePlayer = function(assetKey) {

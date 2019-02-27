@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SERV-4558 - DAI Freezing in IE 11</title>
+  <script src="//content.jwplatform.com/libraries/eWWnG67f.js"></script>
+</head>
+<body>
+  <div id="playerElement"></div>
+  <script>
+    var playerInstance = jwplayer('playerElement');
+    var setupLivePlayer = function(assetKey) {
+        playerInstance.setup({
+            "playlist": [{
+                "file": "//content.jwplatform.com/manifests/Qlh3p9ly.m3u8",
+                "daiSetting": {
+                    "assetKey": assetKey
+                }
+            }],
+            "mute":true,
+            "autostart": "viewable",
+            "image":"https://www.nascar.com/wp-content/uploads/sites/7/2017/09/NASCAR_Drive_StartSlate_v21.jpg",
+            "advertising": {
+                "client": "dai"
+            }
+        });
+    };
+    setupLivePlayer('sN_IYUG8STe1ZzhIIE_ksA');
+    playerInstance.on('ready', function(e) {
+        playerInstance.setControls(true);
+        playerInstance.play();
+    });
+  </script>
+</body>
+</html>

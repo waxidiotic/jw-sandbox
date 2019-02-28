@@ -1,89 +1,71 @@
-<!--
-// Copyright 2016 Google Inc. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
--->
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cast Videos: Google Cast Chrome Sender SDK Demo App</title>
-<link rel="icon" type="image/x-icon" href="imagefiles/favicon.ico" />
-<link rel="icon" type="image/png" href="imagefiles/favicon-16x16.png" />
-<link rel="icon" type="image/png" href="imagefiles/favicon-32x32.png" />
-<link rel="icon" type="image/png" href="imagefiles/favicon-64x64.png" />
-<link rel="stylesheet" type="text/css" href="css/CastVideos.css">
-<link href='//fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic-ext,greek-ext,latin-ext' rel='stylesheet' type='text/css'>
+<title>Google Cast Chrome Sender SDK: Hello Videos</title>
+<link rel="stylesheet" type="text/css" href="css/demo.css">
+<script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+<script src="helloVideos.js"></script>
 </head>
 <body>
-      <div id="top_header">
-        <div id="logo"></div>
+  <div>
+    <div>
+      <h2 style="display:block">Google Cast Chrome Sender SDK: Hello Videos</h2>
+      <div style="float:left; width:100%; margin:10px;">
+        <h3 style="display: inline-block">Choose a media below or enter your own media URL to cast</h3><br>
+        <span style="font-weight:bold; color:#0000cc;">Enter custom media URL</span>: <input type="text" name="customMediaURL" value="" size="70" id="customMediaURL"><br>
+        <input type="submit" name="loadCustomMedia" value="Load Custom Media" onclick="loadCustomMedia();">
       </div>
-      <div id="main_video">
-        <div class="imageSub"> <!-- Put Your Image Width -->
-           <div class="blackbg" id="playerstatebg">IDLE</div>
-           <div class=label id="playerstate">IDLE</div>
-           <img src="images/bunny.jpg" id="video_image">
-           <div id="video_image_overlay"></div>
-           <video id="video_element">
-           </video>
+      <br>
+      <div style="width:80%; margin:10px;">
+        <div style="margin:0px; float:left; width: 40%;">
+           <input type="radio" checked name="media" onclick="selectMedia(0);">Big Buck Bunny MP4<br>
+           <input type="radio" name="media" onclick="selectMedia(1);">Elephants Dream MP4<br>
+           <input type="radio" name="media" onclick="selectMedia(2);">Tears of Steel MOV<br>
+           <input type="radio" name="media" onclick="selectMedia(3);">Reel MP4<br>
+           <input type="radio" name="media" onclick="selectMedia(4);">Google I/O 2011 MP3<br>
         </div>
-
-        <div id="media_control">
-           <div id="play"></div>
-           <div id="pause"></div>
-           <div id="progress_bg"></div>
-           <div id="progress"></div>
-           <div id="progress_indicator"></div>
-           <div id="fullscreen_expand"></div>
-           <div id="fullscreen_collapse"></div>
-           <google-cast-launcher id="castbutton"></google-cast-launcher>
-           <div id="audio_bg"></div>
-           <div id="audio_bg_track"></div>
-           <div id="audio_indicator"></div>
-           <div id="audio_bg_level"></div>
-           <div id="audio_on"></div>
-           <div id="audio_off"></div>
-           <div id="duration">00:00:00</div>
-        </div>
-      </div>
-      <div id="media_info">
-        <div id="media_title">
-        </div>
-        <div id="media_subtitle">
-        </div>
-        <div id="media_desc">
+        <div style="margin:0px; float:left; width:250px;">
+           <img src="images/bunny.jpg" width="250" id="thumb">
+           <img src="images/cast_icon_idle.png" id="casticon" width="30">
         </div>
       </div>
 
-      <div id="carousel">
+      <div style=" margin:0px; float:left; display:block; width:90%;">
+        <div style=" margin:10px; float:left; display:block; width:40%;">
+          <button onclick="launchApp()">Launch app</button>
+          <button onclick="stopApp()">Stop app</button>
+          <button id="joinsessionbyid" style="float:right; display:none;" onclick="joinSessionBySessionId()">Join by session ID</button>
+          <br>
+          <button onclick="loadMedia()">Load media</button>
+          <button id="playpauseresume" onclick="playMedia()">Play</button>
+          <button onclick="stopMedia()">Stop media</button>
+          <button id="muteunmute" onclick="muteMedia();">Mute media</button>
+          <button id="getstatus" onclick="getMediaStatus();">Get media status</button>
+        </div>
+
+        <div style="margin-top:60px; float:left; width:15%;">
+	   <input class="vertical" type="range" min="0" max="100" step="1" onmouseup="setReceiverVolume(1-this.value/100,false);">
+           <div class="vertical">Volume control</div>
+        </div>
+      </div>
+    </div>
+    <div style=" margin:10px; float:left; display:block; width:100%;">
+      <div style="margin:10px;">
+        Progress : <input id="progress" type="range" min="1" max="100" value="1" step="1" onmouseup="seekMedia(this.value);">
+        <span id="duration"></span>
+        <div id="progress_tick"></div>
+      </div>
+      <div style="margin:10px;">
+        State : <span id="playerstate">IDLE</span>
       </div>
 
-      <div id="footer">
-        <div id="copyright">2016 CastVideos All Rights reserved</div>
-        <div id="footer_content">Visit the <a id="footer_content_link" href="https://developers.google.com/cast/">Google Cast Developer Site</a></div>
-        <div id="footer_language">Language English</div>
+      <div style="margin:10px;">
+        <textarea rows="20" cols="70" id="debugmessage">
+        </textarea>
       </div>
 
-      <script src="CastVideos.js"></script>
-      <script type="text/javascript">
-        var castPlayer = new CastPlayer();
-        window['__onGCastApiAvailable'] = function(isAvailable) {
-            if (isAvailable) {
-                castPlayer.initializeCastPlayer();
-            }
-        };
-      </script>
-      <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+    </div>
+  </div>
+
 </body>
 </html>

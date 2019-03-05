@@ -11,8 +11,19 @@
   <video id="video" controls></video>
   <script>
     var video = document.getElementById('video');
+    const config = {
+      liveSyncDuration: 25,
+      autoStartLoad: false,
+      maxBufferSize: 20 * 1000 * 1000,
+      maxMaxBufferLength: Defaults.MaxBufferLength,
+      capLevelToPlayerSize: capLevelToPlayerSize,
+      renderNatively: renderNatively,
+      debug: logger,
+      captionsTextTrack1Label: 'Unknown CC',
+      captionsTextTrack2Label: 'Unknown CC'
+    };
     if(Hls.isSupported()) {
-      var hls = new Hls();
+      var hls = new Hls(config);
       hls.loadSource('https://live-tpc-prod-2.talpatvcdn.nl/sbse2.isml/master.m3u8');
       hls.attachMedia(video);
     }

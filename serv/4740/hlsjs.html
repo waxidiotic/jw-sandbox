@@ -13,12 +13,8 @@
     var video = document.getElementById('video');
     const config = {
       liveSyncDuration: 25,
-      autoStartLoad: false,
       maxBufferSize: 20 * 1000 * 1000,
       maxMaxBufferLength: 25,
-      capLevelToPlayerSize: false,
-      captionsTextTrack1Label: 'Unknown CC',
-      captionsTextTrack2Label: 'Unknown CC'
     };
     if(Hls.isSupported()) {
       var hls = new Hls(config);

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Freewheel Requests Failing</title>
+  <script src="https://cdn.jwplayer.com/libraries/x8J7WEr0.js"></script>
+</head>
+<body>
+  <div id="myElement"></div>
+  <script>
+    const playerInstance = jwplayer('myElement');
+    playerInstance.setup({
+      "file": "//content.bitsontherun.com/videos/3XnJSIm4-injeKYZS.mp4",
+      "fwassetid": "jw_test_asset_d",
+      "duration": 500,
+      "advertising": {
+          "client": "../../bin-debug/freewheel.js",
+          "skipoffset": 3,
+          "freewheel": {
+              "networkid": 90750,
+              "serverid": "http://demo.v.fwmrm.net/ad/g/1",
+              "profileid": "90750:jw_html5_test",
+              "sectionid": "jw_test_site_section"
+          },
+          "adscheduleid": "00000000",
+          "schedule": {
+              "adbreak": {
+                  "offset": "pre",
+                  "tag": "placeholder_preroll"
+              },
+              "adbreak2": {
+                  "offset": "15",
+                  "tag": "placeholder_midroll"
+              },
+              "adbreak4": {
+                  "offset": "post",
+                  "tag": "placeholder_postroll"
+              }
+          }
+      }
+    });
+  </script>
+</body>
+</html>

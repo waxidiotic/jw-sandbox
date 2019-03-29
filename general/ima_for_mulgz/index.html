@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+	<script src="https://content.jwplatform.com/libraries/2719Ifi4.js"></script>
+</head>
+<body>
+<div id="container">Loading Video...</div>
+<script>
+
+    var playerone = jwplayer("container");
+    playerone.setup({
+	    playlist:"https://cdn.jwplayer.com/v2/media/1sc0kL2N?format=json",
+		width:"80%",
+		autostart:true,
+		mute:true,
+		aspectratio:"16:9",
+		advertising: {
+            client:"googima",
+            autoplayAdsMuted:true,
+            schedule:{
+                adbreak1: {
+                    offset:"pre",
+                    tag: "https://rtr.innovid.com/r1.5c0fb0a1482927.53147076;cb=1262774251"
+                }
+            }
+		}
+
+    }).on('adError', (e) => {
+      console.log(e);
+    });
+</script>
+</body>
+</html>

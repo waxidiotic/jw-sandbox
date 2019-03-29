@@ -28,7 +28,9 @@
 		}
 
     }).on('adError', (e) => {
-      console.log(e);
+      console.log('adError: ', e);
+    }).on('error', (e) => {
+      console.log('error: ', e);
     });
 </script>
 </body>

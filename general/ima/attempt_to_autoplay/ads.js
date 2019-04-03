@@ -47,7 +47,6 @@ function checkAutoplaySupport() {
 
 function onAutoplayWithSoundSuccess() {
   // If we make it here, unmuted autoplay works.
-  console.log('Autoplay w/ Sound Success!');
   videoContent.pause();
   autoplayAllowed = true;
   autoplayRequiresMuted = false;
@@ -70,7 +69,6 @@ function checkMutedAutoplaySupport() {
 
 function onMutedAutoplaySuccess() {
   // If we make it here, muted autoplay works but unmuted autoplay does not.
-  console.log('Autoplay Muted Success!');
   videoContent.pause();
   autoplayAllowed = true;
   autoplayRequiresMuted = true;
@@ -79,8 +77,6 @@ function onMutedAutoplaySuccess() {
 
 function onMutedAutoplayFail() {
   // Both muted and unmuted autoplay failed. Fall back to click to play.
-  // Hi
-  console.log('Both autoplay scenarios failed - falling back to click-to-play.');
   videoContent.volume = 1;
   videoContent.muted = false;
   autoplayAllowed = false;

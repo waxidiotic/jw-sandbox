@@ -21,7 +21,7 @@ var adsInitialized;
 var autoplayAllowed;
 var autoplayRequiresMuted;
 
-var log = document.querySelector('.log');
+var log = document.getElementById('log');
 
 function initDesktopAutoplayExample() {
   videoContent = document.getElementById('contentElement');

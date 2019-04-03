@@ -21,8 +21,6 @@ var adsInitialized;
 var autoplayAllowed;
 var autoplayRequiresMuted;
 
-var log = document.getElementById('log');
-
 function initDesktopAutoplayExample() {
   videoContent = document.getElementById('contentElement');
   playButton = document.getElementById('playButton');
@@ -49,7 +47,7 @@ function checkAutoplaySupport() {
 
 function onAutoplayWithSoundSuccess() {
   // If we make it here, unmuted autoplay works.
-  log.textContent = 'Autoplay w/ Sound Success!';
+  console.log('Autoplay w/ Sound Success!');
   videoContent.pause();
   autoplayAllowed = true;
   autoplayRequiresMuted = false;
@@ -72,7 +70,7 @@ function checkMutedAutoplaySupport() {
 
 function onMutedAutoplaySuccess() {
   // If we make it here, muted autoplay works but unmuted autoplay does not.
-  log.textContent = 'Autoplay Muted Success!';
+  console.log('Autoplay Muted Success!');
   videoContent.pause();
   autoplayAllowed = true;
   autoplayRequiresMuted = true;
@@ -81,7 +79,7 @@ function onMutedAutoplaySuccess() {
 
 function onMutedAutoplayFail() {
   // Both muted and unmuted autoplay failed. Fall back to click to play.
-  log.textContent = 'Both autoplay scenarios failed - falling back to click-to-play.';
+  console.log('Both autoplay scenarios failed - falling back to click-to-play.');
   videoContent.volume = 1;
   videoContent.muted = false;
   autoplayAllowed = false;

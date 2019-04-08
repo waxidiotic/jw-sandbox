@@ -114,7 +114,7 @@
     function setupToast() {
       $('.toast').toast({ autohide: false });
       $('.toast').toast('show');
-      playerInstance.on('viewable play pause adBreakStart adBreakEnd', function() {
+      playerInstance.on('ready time adTime', function() {
         document.querySelector('.toast-body').textContent = "Player is ".concat(playerInstance.getViewable() === 1 ? 'viewable' : 'not viewable', ". Player state is ").concat(playerInstance.getState(), ".");
       });
     };

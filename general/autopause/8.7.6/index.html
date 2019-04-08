@@ -114,7 +114,7 @@
     const setupToast = () => {
       $('.toast').toast({ autohide: false });
       $('.toast').toast('show');
-      playerInstance.on('viewable play pause adComplete', () => {
+      playerInstance.on('viewable play pause adBreakEnd', () => {
         document.querySelector('.toast-body').textContent =
           `Player is ${playerInstance.getViewable() === 1 ? 'viewable' : 'not viewable'}.
           Player state is ${playerInstance.getState()}.`;

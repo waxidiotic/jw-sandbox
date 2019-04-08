@@ -88,66 +88,86 @@
         <p class="lorem">
           Floof tum, tickle bum, jellybean footies curly toes. Tuxedo cats always looking dapper gimme attention gimme attention gimme attention gimme attention gimme attention gimme attention just kidding i don't want it anymore meow bye adventure always yet flop over, or hate dog, yet miaow then turn around and show you my bum. Taco cat backwards spells taco cat cats making all the muffins, give me some of your food give me some of your food give me some of your food meh, i don't want it for missing until dinner time inspect anything brought into the house, or get suspicious of own shadow then go play with toilette paper. Meow to be let out leave hair on owner's clothes when owners are asleep, cry for no apparent reason pushes butt to face. Purr as loud as possible, be the most annoying cat that you can, and, knock everything off the table claw your carpet in places everyone can see - why hide my amazing artistic clawing skills?, and cat fur is the new black . Human clearly uses close to one life a night no one naps that long so i revive by standing on chestawaken! i’m so hungry i’m so hungry but ew not for that . Warm up laptop with butt lick butt fart rainbows until owner yells pee in litter box hiss at cats love blinks and purr purr purr purr yawn but you are a captive audience while sitting on the toilet, pet me so lick yarn hanging out of own butt hopped up on catnip. Chew the plant. Sleep everywhere, but not in my bed burrow under covers. Play riveting piece on synthesizer keyboard stare at wall turn and meow stare at wall some more meow again continue staring hopped up on catnip, or curl into a furry donut yet kitty loves pigs toy mouse squeak roll over chase red laser dot. Hide when guests come over intently stare at the same spot, so hate dog, for kitty kitty annoy owner until he gives you food say meow repeatedly until belly rubs, feels good spend six hours per day washing, but still have a crusty butthole. The cat was chasing the mouse this human feeds me, i should be a god refuse to drink water except out of someone's glass kick up litter yet pooping rainbow while flying in a toasted bread costume in space paw your face to wake you up in the morning. Slap kitten brother with paw disappear for four days and return home with an expensive injury; bite the vet make plans to dominate world and then take a nap, bleghbleghvomit my furball really tie the room together. Always hungry hiss and stare at nothing then run suddenly away or when owners are asleep, cry for no apparent reason for cry louder at reflection so fall over dead (not really but gets sypathy) or lick the other cats. Eat and than sleep on your face where is my slave? I'm getting hungry and what a cat-ass-trophy! lies down for refuse to drink water except out of someone's glass give me attention or face the wrath of my claws. Kitty run to human with blood on mouth from frenzied attack on poor innocent mouse, don't i look cute? find a way to fit in tiny box. Chase red laser dot. Hate dog toilet paper attack claws fluff everywhere meow miao french ciao litterbox, yet tickle my belly at your own peril i will pester for food when you're in the kitchen even if it's salad , when in doubt, wash, so fall over dead (not really but gets sypathy). Rub face on everything meow hunt by meowing loudly at 5am next to human slave food dispenser push your water glass on the floor intrigued by the shower. Meow in empty rooms let me in let me out let me in let me out let me in let me out who broke this door anyway sit by the fire. Mew play riveting piece on synthesizer keyboard, licks your face and howl on top of tall thing and human is washing you why halp oh the horror flee scratch hiss bite.
         </p>
-        <script>
-          const playerInstance = jwplayer('player');
-          const defaultConfig = {
-            playlist: 'https://cdn.jwplayer.com/v2/media/goKHZBo7',
-            mute: true,
-            width: '100%',
-            aspectratio: '16:9'
-          }
-
-          playerInstance.setup(defaultConfig);
-
-          const handleClick = (evt) => {
-            setupPlayer(evt.target.value);
-          }
-
-          const radioButtons = document.querySelectorAll('input[type="radio"]');
-          radioButtons.forEach(button => {
-            button.addEventListener('click', handleClick);
-          });
-
-          const setupPlayer = (radioValue) => {
-            let config = playerInstance.getConfig().setupConfig;
-            const tag = 'https://playertest.longtailvideo.com/pre.xml';
-
-            switch (radioValue) {
-              case 'ctp':
-                delete config.autostart;
-                playerInstance.setup(config);
-                break;
-              case 'autostart':
-                config.autostart = true;
-                playerInstance.setup(config);
-                break;
-              case 'autostart_viewable':
-                config.autostart = 'viewable';
-                playerInstance.setup(config);
-                break;
-              case 'ads_none':
-                delete config.advertising;
-                playerInstance.setup(config);
-                break;
-              case 'ads_vast':
-                config.advertising = {};
-                config.advertising.client = 'vast';
-                config.advertising.tag = tag;
-                config.advertising.autoplayadsmuted = true;
-                playerInstance.setup(config);
-              case 'ads_ima':
-                config.advertising = {};
-                config.advertising.client = 'googima';
-                config.advertising.tag = tag;
-                config.advertising.autoplayadsmuted = true;
-                playerInstance.setup(config);
-              default:
-                break;
-            }
-          }
-        </script>
       </div>
     </div>
   </div>
+  <div class="toast" style="position: fixed; bottom: 10px; right: 10px;">
+    <div class="toast-header">
+      <strong class="mr-auto">autoPause</strong>
+    </div>
+    <div class="toast-body">
+      Player state is idle.
+    </div>
+  </div>
+  <script>
+  const playerInstance = jwplayer('player');
+  const defaultConfig = {
+    playlist: 'https://cdn.jwplayer.com/v2/media/goKHZBo7',
+    mute: true,
+    width: '100%',
+    aspectratio: '16:9'
+  }
+
+  playerInstance.setup(defaultConfig);
+  playerInstance.once('ready', () => {
+    $('.toast').toast({ autohide: false });
+    $('.toast').toast('show');
+  });
+  playerInstance.on('viewable play pause', () => {
+    document.querySelector('.toast-body').textContent =
+      `Player is ${playerInstance.getViewable() === 1 ? 'viewable' : 'not viewable'}.
+      Player state is ${playerInstance.getState()}.`;
+  });
+
+  const handleClick = (evt) => {
+    setupPlayer(evt.target.value);
+  }
+
+  const radioButtons = document.querySelectorAll('input[type="radio"]');
+  radioButtons.forEach(button => {
+    button.addEventListener('click', handleClick);
+  });
+
+  const setupPlayer = (radioValue) => {
+    let config = playerInstance.getConfig().setupConfig;
+    const tag = 'https://playertest.longtailvideo.com/pre.xml';
+
+    switch (radioValue) {
+      case 'ctp':
+        delete config.autostart;
+        playerInstance.setup(config);
+        break;
+      case 'autostart':
+        config.autostart = true;
+        playerInstance.setup(config);
+        break;
+      case 'autostart_viewable':
+        config.autostart = 'viewable';
+        playerInstance.setup(config);
+        break;
+      case 'ads_none':
+        delete config.advertising;
+        playerInstance.setup(config);
+        break;
+      case 'ads_vast':
+        config.advertising = {};
+        config.advertising.client = 'vast';
+        config.advertising.tag = tag;
+        config.advertising.autoplayadsmuted = true;
+        playerInstance.setup(config);
+      case 'ads_ima':
+        config.advertising = {};
+        config.advertising.client = 'googima';
+        config.advertising.tag = tag;
+        config.advertising.autoplayadsmuted = true;
+        playerInstance.setup(config);
+      default:
+        break;
+    }
+  }
+</script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

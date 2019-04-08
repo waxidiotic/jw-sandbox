@@ -81,7 +81,9 @@
           const playerInstance = jwplayer('player');
           const defaultConfig = {
             playlist: 'https://cdn.jwplayer.com/v2/media/goKHZBo7',
-            mute: true
+            mute: true,
+            width: '100%',
+            aspectratio: '16:9'
           }
 
           playerInstance.setup(defaultConfig);

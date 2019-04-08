@@ -16,51 +16,75 @@
   </style>
 </head>
 <body>
-  <h1>8.7.6</h1>
-  <hr>
-  <a href="../8.8.2/">Click here for 8.8.2</a>
-  <hr>
-  <div class="player-container">
-    <h2>Click-To-Play / No Ads</h2>
-    <div id="ctp"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>8.7.6</h1>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+          <a href="../8.8.2/">Click here for 8.8.2</a>
+          <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <strong>Configuration:</strong>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="config" id="config_ctp" value="ctp" checked>
+            <label for="config_ctp" class="form-check-label">Click-to-Play</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="config" id="config_autostart" value="autostart">
+            <label for="config_autostart" class="form-check-label">Autostart</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="config" id="config_autostart_viewable" value="autostart_viewable">
+            <label for="config_autostart_viewable" class="form-check-label">Autostart When Viewable</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <strong>Ads:</strong>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="ads" id="ads_none" value="ads_none" checked>
+            <label for="ads_none" class="form-check-label">None</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="ads" id="ads_vast" value="ads_vast">
+            <label for="ads_vast" class="form-check-label">VAST</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" name="ads" id="ads_ima" value="ads_ima">
+            <label for="ads_ima" class="form-check-label">IMA</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <div class="player-container">
+          <div id="player"></div>
+        </div>
+        <script>
+          const playerInstance_ctp = jwplayer('player');
+          playerInstance_ctp.setup({
+            playlist: 'https://cdn.jwplayer.com/v2/media/goKHZBo7'
+          });
+        </script>
+      </div>
+    </div>
   </div>
-  <script>
-    const playerInstance_ctp = jwplayer('ctp');
-    playerInstance_ctp.setup({
-      playlist: 'https://cdn.jwplayer.com/v2/media/goKHZBo7',
-      advertising: {
-        client: 'vast',
-        tag: 'https://playertest.longtailvideo.com/pre.xml'
-      }
-    });
-  </script>
-  <div class="player-container">
-    <h2>Click-To-Play / VAST</h2>
-    <div id="ctp_vast"></div>
-  </div>
-  <script>
-    const playerInstance_ctp_vast = jwplayer('ctp_vast');
-    playerInstance_ctp_vast.setup({
-      playlist: 'https://cdn.jwplayer.com/v2/media/goKHZBo7',
-      advertising: {
-        client: 'vast',
-        tag: 'https://playertest.longtailvideo.com/pre.xml'
-      }
-    });
-  </script>
-  <div class="player-container">
-    <h2>Click-To-Play / IMA</h2>
-    <div id="ctp_ima"></div>
-  </div>
-  <script>
-    const playerInstance_ctp_ima = jwplayer('ctp_ima');
-    playerInstance_ctp_ima.setup({
-      playlist: 'https://cdn.jwplayer.com/v2/media/goKHZBo7',
-      advertising: {
-        client: 'googima',
-        tag: 'https://playertest.longtailvideo.com/pre.xml'
-      }
-    });
-  </script>
 </body>
 </html>

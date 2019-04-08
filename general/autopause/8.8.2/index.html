@@ -10,7 +10,6 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <style>
     .player-container {
@@ -133,10 +132,10 @@
       aspectratio: '16:9'
     }
 
-    const setupToast = () => {
+    function setupToast() {
       $('.toast').toast({ autohide: false });
       $('.toast').toast('show');
-      playerInstance.on('viewable play pause adBreakEnd', () => {
+      playerInstance.on('viewable play pause adBreakEnd', function() {
         document.querySelector('.toast-body').textContent =
           `Player is ${playerInstance.getViewable() === 1 ? 'viewable' : 'not viewable'}.
           Player state is ${playerInstance.getState()}.`;
@@ -146,16 +145,16 @@
     playerInstance.setup(defaultConfig);
     playerInstance.on('ready', setupToast);
 
-    const handleClick = (evt) => {
+    function handleClick(evt) {
       setupPlayer(evt.target.value);
     }
 
     const radioButtons = document.querySelectorAll('input[type="radio"]');
-    radioButtons.forEach(button => {
+    radioButtons.forEach(function(button) {
       button.addEventListener('click', handleClick);
     });
 
-    const setupPlayer = (radioValue) => {
+    function setupPlayer(radioValue) {
       let config = playerInstance.getConfig().setupConfig;
       const tag = 'https://playertest.longtailvideo.com/pre.xml';
 

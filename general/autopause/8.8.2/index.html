@@ -147,7 +147,7 @@
       setupPlayer(evt.target.value);
     }
 
-    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    const radioButtons = Array.from(document.querySelectorAll('input[type="radio"]'));
     radioButtons.forEach(function(button) {
       button.addEventListener('click', handleClick);
     });

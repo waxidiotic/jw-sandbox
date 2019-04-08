@@ -7,6 +7,9 @@
   <title>Functionality Before autoPause</title>
   <script src="https://ssl.p.jwpcdn.com/player/v/8.7.6/jwplayer.js"></script>
   <script>jwplayer.key="VG43QSgWwBVde0vhp0GZiKwAuCxo80vTxq5et+HJpps6M6uF";</script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <style>
     .player-container {
@@ -100,74 +103,74 @@
     </div>
   </div>
   <script>
-  const playerInstance = jwplayer('player');
-  const defaultConfig = {
-    playlist: 'https://cdn.jwplayer.com/v2/media/goKHZBo7',
-    mute: true,
-    width: '100%',
-    aspectratio: '16:9'
-  }
+    const playerInstance = jwplayer('player');
+    const defaultConfig = {
+      playlist: 'https://cdn.jwplayer.com/v2/media/goKHZBo7',
+      mute: true,
+      width: '100%',
+      aspectratio: '16:9'
+    };
 
-  playerInstance.setup(defaultConfig);
-  playerInstance.once('ready', () => {
-    $('.toast').toast({ autohide: false });
-    $('.toast').toast('show');
-  });
-  playerInstance.on('viewable play pause', () => {
-    document.querySelector('.toast-body').textContent =
-      `Player is ${playerInstance.getViewable() === 1 ? 'viewable' : 'not viewable'}.
-      Player state is ${playerInstance.getState()}.`;
-  });
+    const setupToast = () => {
+      $('.toast').toast({ autohide: false });
+      $('.toast').toast('show');
+      playerInstance.on('viewable play pause', () => {
+        document.querySelector('.toast-body').textContent =
+          `Player is ${playerInstance.getViewable() === 1 ? 'viewable' : 'not viewable'}.
+          Player state is ${playerInstance.getState()}.`;
+      });
+    };
 
-  const handleClick = (evt) => {
-    setupPlayer(evt.target.value);
-  }
+    playerInstance.setup(defaultConfig);
+    playerInstance.on('ready', setupToast);
 
-  const radioButtons = document.querySelectorAll('input[type="radio"]');
-  radioButtons.forEach(button => {
-    button.addEventListener('click', handleClick);
-  });
-
-  const setupPlayer = (radioValue) => {
-    let config = playerInstance.getConfig().setupConfig;
-    const tag = 'https://playertest.longtailvideo.com/pre.xml';
-
-    switch (radioValue) {
-      case 'ctp':
-        delete config.autostart;
-        playerInstance.setup(config);
-        break;
-      case 'autostart':
-        config.autostart = true;
-        playerInstance.setup(config);
-        break;
-      case 'autostart_viewable':
-        config.autostart = 'viewable';
-        playerInstance.setup(config);
-        break;
-      case 'ads_none':
-        delete config.advertising;
-        playerInstance.setup(config);
-        break;
-      case 'ads_vast':
-        config.advertising = {};
-        config.advertising.client = 'vast';
-        config.advertising.tag = tag;
-        config.advertising.autoplayadsmuted = true;
-        playerInstance.setup(config);
-      case 'ads_ima':
-        config.advertising = {};
-        config.advertising.client = 'googima';
-        config.advertising.tag = tag;
-        config.advertising.autoplayadsmuted = true;
-        playerInstance.setup(config);
-      default:
-        break;
+    const handleClick = (evt) => {
+      setupPlayer(evt.target.value);
     }
-  }
-</script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(button => {
+      button.addEventListener('click', handleClick);
+    });
+
+    const setupPlayer = (radioValue) => {
+      let config = playerInstance.getConfig().setupConfig;
+      const tag = 'https://playertest.longtailvideo.com/pre.xml';
+
+      switch (radioValue) {
+        case 'ctp':
+          delete config.autostart;
+          playerInstance.setup(config);
+          break;
+        case 'autostart':
+          config.autostart = true;
+          playerInstance.setup(config);
+          break;
+        case 'autostart_viewable':
+          config.autostart = 'viewable';
+          playerInstance.setup(config);
+          break;
+        case 'ads_none':
+          delete config.advertising;
+          playerInstance.setup(config);
+          break;
+        case 'ads_vast':
+          config.advertising = {};
+          config.advertising.client = 'vast';
+          config.advertising.tag = tag;
+          config.advertising.autoplayadsmuted = true;
+          playerInstance.setup(config);
+        case 'ads_ima':
+          config.advertising = {};
+          config.advertising.client = 'googima';
+          config.advertising.tag = tag;
+          config.advertising.autoplayadsmuted = true;
+          playerInstance.setup(config);
+        default:
+          break;
+      }
+      playerInstance.on('ready', setupToast);
+    }
+  </script>
 </body>
 </html>

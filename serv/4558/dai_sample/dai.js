@@ -57,9 +57,9 @@ function initPlayer() {
     }
   });
 
-  requestVODStream(TEST_CONTENT_SOURCE_ID, TEST_VIDEO_ID, null);
+  // requestVODStream(TEST_CONTENT_SOURCE_ID, TEST_VIDEO_ID, null);
   // Uncomment line below and comment one above to request a LIVE stream.
-  //requestLiveStream(TEST_ASSET_KEY, null);
+  requestLiveStream(TEST_ASSET_KEY, null);
 }
 
 /**

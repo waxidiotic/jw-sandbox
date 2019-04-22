@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>IMA: Ad Loaded Event</title>
+  <script src="https://ssl.p.jwpcdn.com/player/v/8.8.4/jwplayer.js"></script>
+  <script>jwplayer.key="VG43QSgWwBVde0vhp0GZiKwAuCxo80vTxq5et+HJpps6M6uF";</script>
+</head>
+<body>
+  <div id="myElement"></div>
+  <script>
+    const playerInstance = jwplayer('myElement');
+    playerInstance.setup({
+      file: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+      advertising: {
+        client: 'googima',
+        debug: true,
+        tag: 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator='
+      }
+    });
+  </script>
+</body>
+</html>

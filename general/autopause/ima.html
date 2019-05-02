@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>IMA Autoplay on Mobile</title>
+  <script src="https://player-develop-test-jenkins.longtailvideo.com/builds/lastSuccessfulBuild/archive/bin-debug/jwplayer.js"></script>
+  <script>jwplayer.key="VG43QSgWwBVde0vhp0GZiKwAuCxo80vTxq5et+HJpps6M6uF";</script>
+</head>
+<body>
+  <div id="myElement"></div>
+  <script>
+    const playerInstance = jwplayer('myElement');
+    playerInstance.setup({
+      "playlist": "https://cdn.jwplayer.com/v2/media/AKPfxJqI",
+      "mute": false,
+      "width": "100%",
+      "aspectratio": "16:9",
+      "advertising": {
+        // "autoplayadsmuted": true,
+        "client": "https://player-develop-test-jenkins.longtailvideo.com/builds/lastSuccessfulBuild/archive/bin-debug/googima.js",
+        "schedule": {
+          "preroll": {
+            "tag": "//playertest.longtailvideo.com/pre.xml",
+            "offset": "pre"
+          }
+        }
+      },
+      "autostart": true
+    });
+  </script>
+</body>
+</html>

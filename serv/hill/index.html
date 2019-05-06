@@ -7,12 +7,13 @@
   <title>The Hill</title>
 </head>
 <body>
-  <video src="https://cdn.jwplayer.com/manifests/MjPYGH4e.m3u8" autoplay controls width="640" height="360" playsinline></video>
+  <video src="https://cdn.jwplayer.com/manifests/MjPYGH4e.m3u8" autoplay muted controls width="640" height="360" playsinline></video>
   <span id="error"></span>
   <script>
     const video = document.querySelector('video');
     video.onerror = (err) => {
       document.getElementById('error').textContent = err.message;
+      console.error(err);
     };
   </script>
 </body>

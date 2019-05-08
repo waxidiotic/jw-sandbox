@@ -5,19 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>The Hill</title>
+  <style>
+    #error {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
   <video src="https://cdn.jwplayer.com/manifests/MjPYGH4e.m3u8" muted controls width="640" height="360" playsinline></video>
   <span id="error"></span>
   <script>
     const video = document.querySelector('video');
-    video.onerror = (err) => {
+    video.addEventListener('error', function(err) {
       document.getElementById('error').textContent += err.message;
       console.error(err);
-    };
-    video.onplay = () => {
-      document.getElementById('error').textContent += 'play';
-    }
+    });
   </script>
 </body>
 </html>

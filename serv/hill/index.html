@@ -14,15 +14,17 @@
 </head>
 <body>
   <video src="https://content.jwplatform.com/videos/BKvWWJFw-1EwVPZmA.mp4" muted controls width="100%" playsinline></video>
-  <video src="https://content.jwplatform.com/videos/BKvWWJFw-1EwVPZmA.mp4" muted controls width="100%" playsinline></video>
-  <video src="https://content.jwplatform.com/videos/BKvWWJFw-1EwVPZmA.mp4" muted controls width="100%" playsinline></video>
-  <video src="https://content.jwplatform.com/videos/BKvWWJFw-1EwVPZmA.mp4" muted controls width="100%" playsinline></video>
+  <video src="https://content.jwplatform.com/videos/oTvqn9uL-1EwVPZmA.mp4" muted controls width="100%" playsinline></video>
+  <video src="https://content.jwplatform.com/videos/ww8R0SK6-1EwVPZmA.mp4" muted controls width="100%" playsinline></video>
+  <video src="https://content.jwplatform.com/videos/HrRvNmtB-1EwVPZmA.mp4" muted controls width="100%" playsinline></video>
   <span id="error"></span>
   <script>
-    const video = document.querySelector('video');
-    video.addEventListener('error', function(evt) {
-      document.getElementById('error').textContent += `Code: ${evt.srcElement.error.code} - ${evt.srcElement.error.message}`;
-      console.error(evt);
+    const videos = document.querySelectorAll('video');
+    videos.forEach((video) => {
+      video.addEventListener('error', function(evt) {
+        document.getElementById('error').textContent += `Code: ${evt.srcElement.error.code} - ${evt.srcElement.error.message}`;
+        console.error(evt);
+      });
     });
   </script>
 </body>

@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SERV-5284</title>
-  <script>jwplayer.key = 'VYuWswBjYg8cox2qLLfIZa/VrTHW40IV5PAflcfcKvk8TZM7';</script>
 </head>
 <body>
   <div id="myElement"></div>
@@ -15,12 +14,11 @@
     };
     const script = document.createElement('script');
     script.onload = () => {
+      jwplayer.key = 'VYuWswBjYg8cox2qLLfIZa/VrTHW40IV5PAflcfcKvk8TZM7';
       jwplayer.defaults = jwDefaults;
       const playerInstance = jwplayer('myElement');
-
       playerInstance.setup({
         file: 'https://cdn.jwplayer.com/manifests/YXkJrbkQ.m3u8',
-        // key: 'VYuWswBjYg8cox2qLLfIZa/VrTHW40IV5PAflcfcKvk8TZM7',
         width: 1280,
         height: 720
       });

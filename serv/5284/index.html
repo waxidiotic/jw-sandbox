@@ -5,19 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SERV-5284</title>
-  <script src="https://player-develop-test-jenkins.longtailvideo.com/builds/lastSuccessfulBuild/archive/bin-debug/jwplayer.js"></script>
+  <script id="embed" src="https://player-develop-test-jenkins.longtailvideo.com/builds/lastSuccessfulBuild/archive/bin-debug/jwplayer.js"></script>
 </head>
 <body>
   <div id="myElement"></div>
   <script>
     const playerInstance = jwplayer('myElement');
-    jwplayer.defaults.key = 'DEqMtEjCKshCstAznfwZY/InsobzXJzPi1StXe0XvySyHVC6l7EFbuKcVPt3MXJc';
-    playerInstance.setup({
-      file: 'https://cdn.jwplayer.com/manifests/YXkJrbkQ.m3u8',
-      key: 'VYuWswBjYg8cox2qLLfIZa/VrTHW40IV5PAflcfcKvk8TZM7',
-      width: 1280,
-      height: 720
-    });
+    document.getElementById('embed').onload = () => {
+      jwplayer.defaults.key = 'DEqMtEjCKshCstAznfwZY/InsobzXJzPi1StXe0XvySyHVC6l7EFbuKcVPt3MXJc';
+      playerInstance.setup({
+        file: 'https://cdn.jwplayer.com/manifests/YXkJrbkQ.m3u8',
+        key: 'VYuWswBjYg8cox2qLLfIZa/VrTHW40IV5PAflcfcKvk8TZM7',
+        width: 1280,
+        height: 720
+      });
+    };
   </script>
 </body>
 </html>

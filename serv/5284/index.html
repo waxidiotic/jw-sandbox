@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SERV-5284</title>
-  <script id="embed" src="https://player-develop-test-jenkins.longtailvideo.com/builds/lastSuccessfulBuild/archive/bin-debug/jwplayer.js"></script>
 </head>
 <body>
   <div id="myElement"></div>
   <script>
-    document.getElementById('embed').onload = () => {
+    const script = document.createElement('script');
+    script.onload = () => {
       jwplayer.defaults.key = 'DEqMtEjCKshCstAznfwZY/InsobzXJzPi1StXe0XvySyHVC6l7EFbuKcVPt3MXJc';
       const playerInstance = jwplayer('myElement');
       playerInstance.setup({
@@ -20,6 +20,8 @@
         height: 720
       });
     };
+    script.src = 'https://player-develop-test-jenkins.longtailvideo.com/builds/lastSuccessfulBuild/archive/bin-debug/jwplayer.js';
+    document.head.appendChild(script);
   </script>
 </body>
 </html>

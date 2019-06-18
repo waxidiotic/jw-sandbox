@@ -9,9 +9,12 @@
 <body>
   <div id="myElement"></div>
   <script>
+    const jwDefaults = {
+      key: 'DEqMtEjCKshCstAznfwZY/InsobzXJzPi1StXe0XvySyHVC6l7EFbuKcVPt3MXJc'
+    };
     const script = document.createElement('script');
     script.onload = () => {
-      jwplayer.defaults.key = 'DEqMtEjCKshCstAznfwZY/InsobzXJzPi1StXe0XvySyHVC6l7EFbuKcVPt3MXJc';
+      jwplayer.defaults = jwDefaults;
       const playerInstance = jwplayer('myElement');
       playerInstance.setup({
         file: 'https://cdn.jwplayer.com/manifests/YXkJrbkQ.m3u8',

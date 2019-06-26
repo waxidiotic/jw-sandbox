@@ -19,9 +19,9 @@
 
       player.on('relatedReady', function() {
         const playlistItems = player.getContainer().querySelectorAll('.jw-related-item-poster');
-        Array.from(playlistItems).forEach(function(item) {
-          getComputedStyle(item);
-        });
+        for (let index = 0; index < playlistItems.length; index++) {
+          getComputedStyle(playlistItems[index]);
+        }
       });
     </script>
   </body>

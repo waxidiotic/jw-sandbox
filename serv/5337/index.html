@@ -6,9 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
+    .outer {
+      width: 720px;
+      height: 406px;
+    }
+
+    .inner {
+      padding: 44px 44px 11px;
+    }
+
+    .poster-container {
+      width: 66%;
+    }
+
     .poster {
-      width: 169.98px;
-      height: 87.65px;
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -18,6 +29,12 @@
   </style>
 </head>
 <body>
-  <div class="poster" style="background-image: url('https://cdn.jwplayer.com/thumbs/VJ5VDLzk-720.jpg');"></div>
+  <div class="outer">
+    <div class="inner">
+      <div class="poster-container">
+        <div class="poster" style="background-image: url('https://cdn.jwplayer.com/thumbs/VJ5VDLzk-720.jpg');"></div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

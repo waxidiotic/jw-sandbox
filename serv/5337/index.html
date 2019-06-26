@@ -18,9 +18,9 @@
       });
 
       player.on('relatedReady', function() {
-        const playlistItems = player.getContainer().querySelectorAll('.jw-related-item-poster');
         const related = player.getPlugin('related');
         related.on('feedShown', function() {
+          const playlistItems = player.getContainer().querySelectorAll('.jw-related-item-poster');
           for (let index = 0; index < playlistItems.length; index++) {
             getComputedStyle(playlistItems[index]);
           }

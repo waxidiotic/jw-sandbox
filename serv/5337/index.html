@@ -19,7 +19,7 @@
 
       player.on('relatedReady', function() {
         const related = player.getPlugin('related');
-        related.on('feedShown', function() {
+        related.on('open', function() {
           const playlistItems = player.getContainer().querySelectorAll('.jw-related-item-poster');
           for (let index = 0; index < playlistItems.length; index++) {
             getComputedStyle(playlistItems[index]);

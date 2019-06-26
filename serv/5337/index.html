@@ -19,7 +19,7 @@
 
       player.on('relatedReady', function() {
         const playlistItems = player.getContainer().querySelectorAll('.jw-related-item-poster');
-        playlistItems.forEach(item => {
+        playlistItems.forEach(function(item) {
           getComputedStyle(item);
         });
       });

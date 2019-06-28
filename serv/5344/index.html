@@ -24,7 +24,8 @@
 
 document.querySelector('video').ontimeupdate = (event) => {
   if (event.timeStamp) {
-    document.getElementById('output').innerHTML += `Time (ms): ${event.timeStamp}`;
+    console.log(event);
+    document.getElementById('output').innerHTML += `Time (ms): ${event.timeStamp}<br>`;
   }
 };
 

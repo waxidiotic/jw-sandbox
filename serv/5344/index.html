@@ -23,7 +23,9 @@
 // });
 
 document.querySelector('video').ontimeupdate = (event) => {
-  console.log(event);
+  if (event.timeStamp) {
+    document.getElementById('output').innerHTML += `Time (ms): ${event.timeStamp}`;
+  }
 };
 
 </script>

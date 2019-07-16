@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SERV-5418 - Prototype Conflicts</title>
+    <!-- <script src="https://pqis-apps.s3.amazonaws.com/temp-jwplayer/ProQuestJS/prototype.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prototype/1.7.3/prototype.min.js"></script>
     <script src="https://pqis-apps.s3.amazonaws.com/temp-jwplayer/jwplayer/jwplayer.js"></script>
-    <script src="https://pqis-apps.s3.amazonaws.com/temp-jwplayer/ProQuestJS/prototype.js"></script>
     <script>
-        // if ('NodeList' in window) {
-        //     if (!NodeList.prototype.each && NodeList.prototype.forEach) {
-        //     NodeList.prototype.each = NodeList.prototype.forEach;
-        //     }
-        // }
+        if ('NodeList' in window) {
+            if (!NodeList.prototype.each && NodeList.prototype.forEach) {
+            NodeList.prototype.each = NodeList.prototype.forEach;
+            }
+        }
     </script>
 </head>
 <body>

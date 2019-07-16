@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SERV-5418 - Prototype Conflicts</title>
+    <script src="https://pqis-apps.s3.amazonaws.com/temp-jwplayer/ProQuestJS/prototype.js"></script>
+    <script src="https://pqis-apps.s3.amazonaws.com/temp-jwplayer/jwplayer/jwplayer.js"></script>
+    <script>
+        if ('NodeList' in window) {
+            if (!NodeList.prototype.each && NodeList.prototype.forEach) {
+            NodeList.prototype.each = NodeList.prototype.forEach;
+            }
+        }
+    </script>
+</head>
+<body>
+  <!-- Here is the <div> for the player -->
+  <div id="myElement"></div>
+
+  <script type="text/JavaScript">
+    jwplayer.key = 'GNWRf/SaFWsdAS02Z66O4UYBgsdnaqrKzmOndPgf+K/T+bVZ';
+
+    var playlistOne = [ {
+      "sources" : [ {
+        "file" : "https://wowzaec2demo.streamlock.net/vod-multitrack/_definst_/smil:ElephantsDream/elephantsdream2.smil/playlist.m3u8",
+        "type" : "hls"
+      } ]
+    } ];
+
+    jwplayer("myElement").setup({
+      "playlist" : playlistOne
+    });
+  </script>
+</body>
+</html>

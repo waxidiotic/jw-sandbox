@@ -53,7 +53,7 @@ var Application = function() {
   this.setVideoEndedCallbackEnabled(true);
 };
 
-Application.prototype.SAMPLE_AD_TAG_ = 'https://playertest.longtailvideo.com/ads/vmap_404.xml';
+Application.prototype.SAMPLE_AD_TAG_ = 'https://nada';
 
 Application.prototype.setVideoEndedCallbackEnabled = function(enable) {
   if (enable) {

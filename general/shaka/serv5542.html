@@ -9,11 +9,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.5.4/shaka-player.ui.debug.js"></script>
 </head>
 <body>
-  <video id="video"
-    width="640"
-    poster="//shaka-player-demo.appspot.com/assets/poster.jpg"
-    controls autoplay>
-  </video>
+  <div id="container">
+    <video id="video"
+      width="640"
+      poster="//shaka-player-demo.appspot.com/assets/poster.jpg"
+      controls autoplay>
+    </video>
+  </div>
   <script>
     var manifestUri = 'https://stream9.nava.hu/m3_live_drm_DEV/_definst_/smil:m3_1080p.smil/manifest.mpd';
     var licenseServerUri = 'https://wv-keyos.licensekeyserver.com';
@@ -35,13 +37,13 @@
     async function initPlayer() {
       // Create a Player instance.
       var video = document.getElementById('video');
-      var ui = video['ui'];
+      var videoContainer = document.getElementById('container');
+      var player = new shaka.Player(video);
       var config = {
         overflowMenuButtons: ['quality']
       };
-      ui.configure(config);
+      const ui = new shaka.ui.Overlay(player, videoContainer, video, config);
       var controls = ui.getControls();
-      var player = controls.getPlayer();
 
       // Attach player to the window to make it easy to access in the JS console.
       window.player = player;

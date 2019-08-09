@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SERV-5571</title>
-    <script src="https://player-develop-test-jenkins.longtailvideo.com/builds/lastSuccessfulBuild/archive/bin-debug/jwplayer.js"></script> -->
+    <script src="https://player-develop-test-jenkins.longtailvideo.com/builds/lastSuccessfulBuild/archive/bin-debug/jwplayer.js"></script>
     <script>jwplayer.key="VG43QSgWwBVde0vhp0GZiKwAuCxo80vTxq5et+HJpps6M6uF";</script>
     <!-- <script src="https://ssl.p.jwpcdn.com/player/v/8.5.0/jwplayer.js"></script>
     <script>jwplayer.key="VG43QSgWwBVde0vhp0GZiKwAuCxo80vTxq5et+HJpps6M6uF";</script> -->
@@ -31,7 +31,7 @@
             aspectratio: '16:9',
             autostart: true,
             mute: false
-        }).on('all', (e) => console.log(e)).on('playlistItem', () => playerInstance.play);
+        }).on('playlistItem', () => { playerInstance.play() });
 
         function loadItem(mediaId) {
             playerInstance.load(`https://cdn.jwplayer.com/v2/media/${mediaId}`);

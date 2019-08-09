@@ -24,6 +24,7 @@
         <button id="32BW4m6h">Asset 4</button>
     </div>
     <script>
+        let loadedItem = false;
         const playerInstance = jwplayer('myElement');
         playerInstance.setup({
             playlist: '//cdn.jwplayer.com/v2/media/AKPfxJqI',
@@ -31,9 +32,14 @@
             aspectratio: '16:9',
             autostart: true,
             mute: false
-        }).on('playlistItem', () => { playerInstance.play() });
+        }).on('playlistItem', () => {
+            if (loadedItem) {
+                playerInstance.play();
+            }
+        });
 
         function loadItem(mediaId) {
+            loadedItem = true;
             playerInstance.load(`https://cdn.jwplayer.com/v2/media/${mediaId}`);
         }
 

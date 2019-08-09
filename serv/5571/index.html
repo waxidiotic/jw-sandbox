@@ -31,7 +31,7 @@
         const buttons = document.querySelectorAll('button');
         buttons.forEach(button => {
             button.addEventListener('click', (evt) => {
-                console.log(evt.target);
+                loadItem(evt.target.id);
             });
         })
     </script>

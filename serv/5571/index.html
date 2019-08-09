@@ -31,7 +31,7 @@
             aspectratio: '16:9',
             autostart: true,
             mute: false
-        }).on('all', (e) => console.log(e));
+        }).on('all', (e) => console.log(e)).on('playlistItem', () => playerInstance.play);
 
         function loadItem(mediaId) {
             playerInstance.load(`https://cdn.jwplayer.com/v2/media/${mediaId}`);

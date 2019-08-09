@@ -11,17 +11,17 @@
 <body>
     <div id="myElement"></div>
     <div class="button-container">
-        <button>Asset 1</button>
-        <button>Asset 2</button>
-        <button>Asset 3</button>
-        <button>Asset 4</button>
+        <button id="4hNDDMtP">Asset 1</button>
+        <button id="J9lNPqQI">Asset 2</button>
+        <button id="KTGAu82V">Asset 3</button>
+        <button id="32BW4m6h">Asset 4</button>
     </div>
     <script>
         const playerInstance = jwplayer('myElement');
         playerInstance.setup({
-          file: '',
-          width: 720,
-          aspectratio: '16:9'
+            playlist: '//cdn.jwplayer.com/v2/media/AKPfxJqI',
+            width: 720,
+            aspectratio: '16:9'
         });
 
         function loadItem(mediaId) {
@@ -30,8 +30,8 @@
 
         const buttons = document.querySelectorAll('button');
         buttons.forEach(button => {
-            button.addEventListener('click', {
-                // take id and pass it to load video
+            button.addEventListener('click', (evt) => {
+                console.log(evt.target);
             });
         })
     </script>

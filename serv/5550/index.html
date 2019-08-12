@@ -121,7 +121,7 @@
             var url_params = parse_query_string(window.location.search.substring(1));
             if (url_params.hasOwnProperty('debug')) debug = true;
 
-            if (url_params.hasOwnProperty('p')) {
+            if (url_params.hasOwnProperty('partner')) {
                 try {
                     params = JSON.parse(atob(url_params.p));
                 } catch (e) {

@@ -132,7 +132,7 @@
                     video_id = params.key;
                     first_video_id = params.key;
                 }
-                if (typeof params.p != 'undefined') partner_id = params.p;
+                if (typeof params.partner != 'undefined') partner_id = params.partner;
                 if (typeof params.pl != 'undefined') playlist_id = params.pl;
                 if ((!video_id && !playlist_id) || !partner_id) {
                     console.log('Error parsing input: 3');

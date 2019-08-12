@@ -121,9 +121,9 @@
             var url_params = parse_query_string(window.location.search.substring(1));
             if (url_params.hasOwnProperty('debug')) debug = true;
 
-            if (url_params.hasOwnProperty('partner')) {
+            if (url_params.hasOwnProperty('partnerId')) {
                 try {
-                    params = JSON.parse(atob(url_params.partner));
+                    params = JSON.parse(atob(url_params.partnerId));
                 } catch (e) {
                     console.log('Error parsing input');
                     return false;
@@ -132,7 +132,7 @@
                     video_id = params.key;
                     first_video_id = params.key;
                 }
-                if (typeof params.partner != 'undefined') partner_id = params.partner;
+                if (typeof params.p != 'undefined') partner_id = params.p;
                 if (typeof params.pl != 'undefined') playlist_id = params.pl;
                 if ((!video_id && !playlist_id) || !partner_id) {
                     console.log('Error parsing input: 3');

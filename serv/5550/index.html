@@ -22,32 +22,32 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
     <script>
-      var jwDefaults = {
-        "aspectratio": "16:9",
-        "autoPause": {},
-        "autostart": "viewable",
-        "controls": true,
-        "displaydescription": true,
-        "displaytitle": true,
-        "flashplayer": "//ssl.p.jwpcdn.com/player/v/8.9.5/jwplayer.flash.swf",
-        "height": 360,
-        "key": "LSRl8NCALdE4eOpWt3prnSTh0J4Qp9OZS9Rcn4AAgqJg3NSxvdjCtMJBTeDU6JX3",
-        "mute": true,
-        "ph": 1,
-        "pid": "OksleaV0",
-        "playbackRateControls": false,
-        "preload": "metadata",
-        "related": {
-          "autoplaytimer": 10,
-          "file": "//content.jwplatform.com/v2/playlists/xSMxsuXe?related_media_id=MEDIAID",
-          "onclick": "play",
-          "oncomplete": "autoplay"
-        },
-        "repeat": false,
-        "stagevideo": false,
-        "stretching": "uniform",
-        "width": "100%"
-      };
+      // var jwDefaults = {
+      //   "aspectratio": "16:9",
+      //   "autoPause": {},
+      //   "autostart": "viewable",
+      //   "controls": true,
+      //   "displaydescription": true,
+      //   "displaytitle": true,
+      //   "flashplayer": "//ssl.p.jwpcdn.com/player/v/8.9.5/jwplayer.flash.swf",
+      //   "height": 360,
+      //   "key": "LSRl8NCALdE4eOpWt3prnSTh0J4Qp9OZS9Rcn4AAgqJg3NSxvdjCtMJBTeDU6JX3",
+      //   "mute": true,
+      //   "ph": 1,
+      //   "pid": "OksleaV0",
+      //   "playbackRateControls": false,
+      //   "preload": "metadata",
+      //   "related": {
+      //     "autoplaytimer": 10,
+      //     "file": "//content.jwplatform.com/v2/playlists/xSMxsuXe?related_media_id=MEDIAID",
+      //     "onclick": "play",
+      //     "oncomplete": "autoplay"
+      //   },
+      //   "repeat": false,
+      //   "stagevideo": false,
+      //   "stretching": "uniform",
+      //   "width": "100%"
+      // };
         var debug = false;
 
         var default_playlist = "gAY5QsM6";
@@ -184,8 +184,8 @@
         function loadVideoPlayer() {
 
             $.getScript(
-                // "//content.jwplatform.com/libraries/" + player_id + ".js",
-                "//player-develop-test-jenkins.longtailvideo.com/builds/lastSuccessfulBuild/archive/bin-debug/jwplayer.js",
+                "//content.jwplatform.com/libraries/" + player_id + ".js",
+                // "//player-develop-test-jenkins.longtailvideo.com/builds/lastSuccessfulBuild/archive/bin-debug/jwplayer.js"
                 function() {
                     if (debug) console.log('JWplayer script loaded');
                     player_obj = jwplayer('player'); // 'player' is the ID of the div tag that contains the player ;-)

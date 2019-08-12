@@ -32,7 +32,7 @@
             aspectratio: '16:9',
             autostart: true,
             mute: false
-        }).on('playlistItem', () => {
+        }).on('playlistItem', function() {
             if (loadedItem) {
                 playerInstance.play();
             }
@@ -40,12 +40,12 @@
 
         function loadItem(mediaId) {
             loadedItem = true;
-            playerInstance.load(`https://cdn.jwplayer.com/v2/media/${mediaId}`);
+            playerInstance.load('https://cdn.jwplayer.com/v2/media/' + mediaId);
         }
 
         const buttons = document.querySelectorAll('button');
         buttons.forEach(button => {
-            button.addEventListener('click', (evt) => {
+            button.addEventListener('click', function(evt) {
                 loadItem(evt.target.id);
             });
         })

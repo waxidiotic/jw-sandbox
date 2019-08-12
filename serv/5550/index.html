@@ -1,112 +1,551 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="//cdn.jwplayer.com/libraries/ZtSUHnfr.js"></script>
-</head>
-<body>
-    <div id="myElement"></div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-80588940-15"></script>
     <script>
-        jwplayer('myElement').setup({
-  "autostart": "viewable",
-  "playlist": {
-    "playlist": [
-      {
-        "owner_nickname": "realmadrid",
-        "owner_display_name": "Real Madrid",
-        "custom_ad_tag": "club/real-madrid",
-        "mediaid": "qMmQ6xrs",
-        "description": "قبل مواجهة ريال مدريد الودية أمام ريد بول سالزبورج، نستعرض معكم زيارات الفريق الملكي الإسباني للنمسا. وواجه الميرينجي خصوم من النمسا في دوري أبطال أوروبا بنظاميه القديم والجديد وبطولة الأندية الأوروبية أبطال الكؤوس.",
-        "pubdate": 1565103897,
-        "tags": "realmadrid,dugout-arabic",
-        "language": "ar",
-        "image": "https://cdn.jwplayer.com/thumbs/qMmQ6xrs-720.jpg",
-        "title": "مواجهات ريال مدريد في النمسا",
-        "variations": {},
-        "feedid": "2guRC8gn",
-        "allow_embed": "yes",
-        "allow_ads": "yes",
-        "sources": [
-          {
-            "default": false,
-            "type": "hls",
-            "file": "https://cdn.jwplayer.com/manifests/qMmQ6xrs.m3u8",
-            "label": "0",
-            "mimeType": "application/vnd.apple.mpegurl"
-          },
-          {
-            "default": false,
-            "width": 320,
-            "height": 180,
-            "type": "mp4",
-            "file": "https://cdn.jwplayer.com/videos/qMmQ6xrs-pCXpSaYU.mp4",
-            "label": "180p",
-            "mimeType": "video/mp4"
-          },
-          {
-            "default": false,
-            "width": 480,
-            "height": 270,
-            "type": "mp4",
-            "file": "https://cdn.jwplayer.com/videos/qMmQ6xrs-lCg8uT6f.mp4",
-            "label": "270p",
-            "mimeType": "video/mp4"
-          },
-          {
-            "default": false,
-            "width": 720,
-            "height": 406,
-            "type": "mp4",
-            "file": "https://cdn.jwplayer.com/videos/qMmQ6xrs-2ExpkmnO.mp4",
-            "label": "406p",
-            "mimeType": "video/mp4"
-          },
-          {
-            "default": false,
-            "width": 1280,
-            "height": 720,
-            "type": "mp4",
-            "file": "https://cdn.jwplayer.com/videos/qMmQ6xrs-3c0ImILb.mp4",
-            "label": "720p",
-            "mimeType": "video/mp4"
-          },
-          {
-            "default": false,
-            "type": "mp4",
-            "file": "https://cdn.jwplayer.com/videos/qMmQ6xrs-wMZer4Zp.m4a",
-            "label": "AAC Audio",
-            "mimeType": "audio/mp4"
-          },
-          {
-            "default": false,
-            "width": 1920,
-            "height": 1080,
-            "type": "mp4",
-            "file": "https://cdn.jwplayer.com/videos/qMmQ6xrs-vuhTeads.mp4",
-            "label": "1080p",
-            "mimeType": "video/mp4"
-          }
-        ],
-        "tracks": [
-          {
-            "kind": "thumbnails",
-            "file": "https://cdn.jwplayer.com/strips/qMmQ6xrs-120.vtt"
-          }
-        ],
-        "owner_user_type": "club",
-        "link": "https://cdn.jwplayer.com/previews/qMmQ6xrs",
-        "duration": 80,
-        "slug": "مواجهات-ريال-مدريد-في-النمسا"
-      }
-    ]
-  },
-  "setTimeEvents": true,
-  "vastLoadTimeout": 15000,
-  "mute": true
-});
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-80588940-15');
     </script>
+
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1, user-scalable=0" />
+    <title>Dugout Embed V2</title>
+    <meta name="description" content="Get behind the scenes of the world's top football clubs, players and legends. Exclusive content from AC Milan, Arsenal, Barca, Bayern Munich, Chelsea, Juventus, Liverpool, Man City, PSG and more.">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+      var jwDefaults = {
+        "aspectratio": "16:9",
+        "autoPause": {},
+        "autostart": "viewable",
+        "controls": true,
+        "displaydescription": true,
+        "displaytitle": true,
+        "flashplayer": "//ssl.p.jwpcdn.com/player/v/8.9.5/jwplayer.flash.swf",
+        "height": 360,
+        "key": "LSRl8NCALdE4eOpWt3prnSTh0J4Qp9OZS9Rcn4AAgqJg3NSxvdjCtMJBTeDU6JX3",
+        "mute": true,
+        "ph": 1,
+        "pid": "OksleaV0",
+        "playbackRateControls": false,
+        "preload": "metadata",
+        "related": {
+          "autoplaytimer": 10,
+          "file": "//content.jwplatform.com/v2/playlists/xSMxsuXe?related_media_id=MEDIAID",
+          "onclick": "play",
+          "oncomplete": "autoplay"
+        },
+        "repeat": false,
+        "stagevideo": false,
+        "stretching": "uniform",
+        "width": "100%"
+      };
+        var debug = false;
+
+        var default_playlist = "gAY5QsM6";
+
+        var video_id = null;
+        var first_video_id = null;
+        var video_metadata = null;
+        var playlist_id = null;
+        var playlist_slug = null;
+        var playlist_items = null;
+        var playlist_position = -1;
+        var playlist_array = null;
+        var simulate_live = false;
+
+        var url_params = null;
+        var base_url = null;
+
+        var old_tag = "item-custom_ad_tag";
+        var embed_dfp_tag = "__embed_partner__";
+        var producer_dfp_tag = "__producer_partner__";
+
+        var player_obj = null;
+        var player_loaded = false;
+        var playlist_obj = null;
+        var playlist_pos = 0;
+
+        var video_loaded = false;
+
+        var partner_id = null;
+        var partner_config = {
+            allow_ads: "yes",
+            allow_playlists: "yes",
+            floating_player: "yes",
+            allow_autoplay: "yes",
+            follow_up_playlist: "trending",
+            ad_position: "mid-roll"
+        };
+
+        var default_player_id = "DLFEWqUX";
+        var player_id = null;
+
+        var partner_autoplay = true;
+
+        var publisher_id = null;
+        var publisher_config = {
+            allow_embeds: "yes",
+            allow_ads: "yes",
+            disallowed: [],
+            blacklisted: []
+        };
+
+        var parent_url = null;
+        var parent_domain = null;
+        var parent_root_domain = null;
+
+        var observer_timer = null;
+
+        // when document is fully loaded (jQuery and JWplayer included)
+        $(document).ready(function() {
+            console.log('Embed code begins...');
+
+            // get the URL parameters to know what to show
+            getConfiguration();
+        });
+
+
+        // get all configuration data
+        function getConfiguration() {
+
+            // parse URL parameters
+            var url_params = parse_query_string(window.location.search.substring(1));
+            if (url_params.hasOwnProperty('debug')) debug = true;
+
+            if (url_params.hasOwnProperty('p')) {
+                try {
+                    params = JSON.parse(atob(url_params.p));
+                } catch (e) {
+                    console.log('Error parsing input');
+                    return false;
+                }
+                if (typeof params.key != 'undefined') {
+                    video_id = params.key;
+                    first_video_id = params.key;
+                }
+                if (typeof params.p != 'undefined') partner_id = params.p;
+                if (typeof params.pl != 'undefined') playlist_id = params.pl;
+                if ((!video_id && !playlist_id) || !partner_id) {
+                    console.log('Error parsing input: 3');
+                    return false;
+                }
+                if (debug) console.log("Video ID, playlist ID and Partner ID: ", video_id, playlist_id, partner_id);
+
+                // Load partners configuration
+                $.get('/data/partners/' + partner_id.toLowerCase() + '.json').done(function(data) {
+                    //if (data.hasOwnProperty('player_id') && data.player_id.trim().length == 0) {
+                    // player_id is empty
+                    //data.player_id = partner_config.player_id;
+                    //if (debug) console.log('Partner has an empty Player ID, so set to default: ', partner_config.player_id);
+                    //}
+
+                    partner_config = Object.assign(partner_config, data);
+
+                    if (video_id) {
+                        // it's editorial player
+                        if ("player_id" in partner_config && partner_config.player_id.trim().length > 0) player_id = partner_config.player_id;
+                        else player_id = default_player_id;
+                    } else if (playlist_id) {
+                        // it's always-on player
+                        if ("player_id_aop" in partner_config && partner_config.player_id_aop.trim().length > 0) player_id = partner_config.player_id_aop;
+                        else if ("player_id" in partner_config && partner_config.player_id.trim().length > 0) player_id = partner_config.player_id;
+                        else player_id = default_player_id;
+                    } else {
+                        if (debug) console.log('No video, no playlist specified. Aborting. 1');
+                        return false;
+                    }
+
+                    if (debug) console.log('Partner config and Partner Player ID: ', partner_config, player_id);
+
+                    loadVideoPlayer();
+
+                }).fail(function() {
+                    if (debug) console.log('No information found for ' + partner_id + ' partner. Default used.');
+                    //loadVideoPlayer();
+                });
+
+            } else {
+                console.log('Invalid input');
+                return false;
+            }
+            return true;
+        }
+
+        // load partner's player
+        function loadVideoPlayer() {
+
+            $.getScript(
+                // "//content.jwplatform.com/libraries/" + player_id + ".js",
+                "//player-develop-test-jenkins.longtailvideo.com/builds/lastSuccessfulBuild/archive/bin-debug/jwplayer.js",
+                function() {
+                    if (debug) console.log('JWplayer script loaded');
+                    player_obj = jwplayer('player'); // 'player' is the ID of the div tag that contains the player ;-)
+
+                    if (video_id) {
+                        // check if we can autoplay the video
+                        if (partner_config.hasOwnProperty('allow_autoplay')) {
+                            if (partner_config.allow_autoplay == 'no') partner_autoplay = false;
+                            else if (partner_config.allow_autoplay == 'viewable') partner_autoplay = 'viewable';
+                            else partner_autoplay = true;
+                        } else partner_autoplay = true;
+
+                        playVideo();
+
+                    } else if (playlist_id) {
+                        if (debug) console.log('No video specified, playing playlist');
+
+                        // check if we can autoplay the video
+                        if (partner_config.hasOwnProperty('allow_autoplay_aop')) {
+                            if (partner_config.allow_autoplay_aop == 'no') partner_autoplay = false;
+                            else if (partner_config.allow_autoplay_aop == 'viewable') partner_autoplay = 'viewable';
+                            else partner_autoplay = true;
+                        } else partner_autoplay = true;
+
+                        simulate_live = true;
+                        loadPlaylist();
+
+                    } else {
+                        if (debug) console.log('No video, no playlist specified. Aborting');
+                        return false;
+                    }
+                }
+            );
+        }
+
+        // this function sets up the video player and manages player events
+        function playVideo(item = null) {
+
+            if (item && item.mediaid) {
+                // if we already have the playlist value
+                video_metadata = item;
+                video_id = video_metadata.mediaid;
+                checkVideoConstraints();
+
+            } else {
+                //$.get('https://media-live-service.dugout.com/v3/media/video?response_format=jw&mediaid=' + video_id)
+                $.get('https://cdn.jwplayer.com/v2/media/' + video_id)
+                    .done(function(data) {
+                        if (typeof data.playlist[0].owner_nickname !== 'undefined') {
+                            video_metadata = data.playlist[0];
+                            if (debug) console.log('Video metadata', video_metadata);
+                            checkVideoConstraints();
+                        } else console.log('Invalid nickname');
+                    })
+                    .fail(function() {
+                        console.log('No video metadata for ' + video_id);
+                        return false;
+                    });
+            }
+        }
+
+        function checkVideoConstraints() {
+
+            if (!video_metadata) {
+                if (debug) console.log('No video metadata');
+                return;
+            }
+
+            // load publisher config
+            publisher_id = video_metadata.owner_nickname;
+            $.get('/data/publishers/' + publisher_id.toLowerCase() + '.json').done(function(data) {
+                //console.log(typeof data);
+                if (typeof data === 'string') data = JSON.parse(data);
+                if (typeof data === 'object') {
+                    publisher_config = Object.assign(publisher_config, data);
+                } else if (debug) console.log('Publisher config invalid, using default');
+
+                if (debug) console.log('Publisher config', publisher_config);
+
+                if (publisher_config.allow_embeds == 'no') {
+                    if (debug) console.log('Publisher doesn\'t allow embeds');
+                    return false;
+                }
+
+                if (typeof video_metadata.allow_embeds != 'undefined' && video_metadata.allow_embeds == 'no') {
+                    if (debug) console.log('This video doesn\'t allow embeds');
+                    return false;
+                }
+
+                // check blacklists
+                parent_url = (window.location != window.parent.location) ? document.referrer : document.location.href;
+                parent_domain = extractHostname(parent_url);
+                parent_root_domain = extractRootDomain(parent_url);
+                if (debug) console.log('Embedded from: ', parent_domain);
+
+                for (i = 0; i < publisher_config.blacklisted.length; i++) {
+                    if (parent_domain.indexOf(publisher_config.blacklisted[i]) >= 0 || parent_root_domain.indexOf(publisher_config.blacklisted[i]) >= 0) {
+                        if (debug) console.log('Domain not allowed');
+                        return false;
+                    }
+                }
+
+                for (i = 0; i < publisher_config.disallowed.length; i++) {
+                    if (publisher_config.disallowed[i] == partner_id) {
+                        if (debug) console.log('Partner not allowed');
+                        return false;
+                    }
+                }
+
+                setupVideoPlayer();
+
+            }).fail(function() {
+                if (debug) console.log('No information found for ' + publisher_id + ' publisher. Default used.');
+                setupVideoPlayer();
+
+            });
+        }
+
+
+        // setup the player
+        function setupVideoPlayer() {
+
+            if (debug) console.log("Setup the player for video_id: ", video_id);
+
+            var temp_playlist = {
+                playlist: [video_metadata]
+            };
+
+            console.log('auto_play', partner_autoplay);
+
+            player_obj.setup({
+                autostart: partner_autoplay,
+                playlist: temp_playlist,
+                setTimeEvents: true,
+                vastLoadTimeout: 15000,
+                mute: (partner_autoplay) ? true : false
+            }).on("setupError", function() {
+                if (debug) console.log("Video not found or error setting up the player");
+
+            }).on("playlistItem",
+                onPlaylistItem
+
+            ).on('adError', function(e) {
+                console.log('Ad Error');
+                console.log(e);
+                console.log('Ad Error');
+            }).on("play", function() {
+                if (simulate_live) {
+                    simulate_live = false;
+                    //var video_length = player_obj.getDuration();
+                    //var seek = Math.floor(Math.random() * video_length) + 1;
+                    //if (debug) console.log("Simulate live content: ", video_length, seek);
+                    //player_obj.seek(seek);
+                    if (partner_autoplay === true) player_obj.play();
+                    else if (partner_autoplay == 'viewable' && player_obj.getViewable()) player_obj.play();
+                }
+            }).on("playlistComplete", function() {
+                // when the playlist ends
+                if (debug) console.log('Video #', playlist_position, ' finished. Move to next video in the playlist');
+                if (!playlist_items) loadPlaylist();
+                else playNextItem();
+            });
+        }
+
+        function loadPlaylist() {
+            if (partner_config.allow_playlists == 'no') {
+                if (debug) console.log('No playlist required');
+                return false;
+            }
+
+            playlist_url = null;
+            if (playlist_id) {
+                playlist_url = 'https://cdn.jwplayer.com/v2/playlists/' + playlist_id;
+            } else if (partner_config.follow_up_playlist == "related-same") {
+                playlist_id = partner_config.follow_up_playlist;
+                playlist_url = "https://cdn.jwplayer.com/v2/playlists/W5FWgUmX?tags=" + video_metadata.owner_nickname;
+            } else if (partner_config.follow_up_playlist == "none") {
+                return false;
+            } else {
+                playlist_id = default_playlist;
+                playlist_url = 'https://cdn.jwplayer.com/v2/playlists/' + playlist_id;
+            }
+
+            $.get(playlist_url).done(function(data) {
+                if (typeof data.data !== 'undefined' || typeof data.results !== 'undefined' || typeof data.playlist !== 'undefined') {
+
+                    if (typeof data.data !== 'undefined' && typeof data.data.playlist !== 'undefined') playlist_items = data.data.playlist;
+                    else if (typeof data.results !== 'undefined') playlist_items = data.results;
+                    else if (typeof data.playlist !== 'undefined') playlist_items = data.playlist;
+                    else {
+                        if (debug) console.log('No items found in the playlist');
+                        return;
+                    }
+
+                    if (debug) {
+                        console.log('Loaded playlist:', playlist_items);
+                    }
+
+                    // remove the initial embedded video from the playlist to avoid duplicates
+                    for (i = 0; i < playlist_items.length; i++) {
+                        if (first_video_id && playlist_items[i].mediaid == first_video_id) {
+                            playlist_items.splice(i, 1);
+                            break;
+                        }
+                    }
+
+                    if (debug) console.log("Final playlist: ", playlist_items);
+
+                    playNextItem();
+
+                } else {
+                    console.log('Playlist content missing');
+                }
+            });
+        }
+
+        function playNextItem() {
+
+            if (playlist_items) {
+                playlist_position++;
+                playVideo(playlist_items[playlist_position]);
+            }
+
+        }
+
+        function onPlaylistItem(item) {
+            // now the player and the playlist are loaded
+            // we must change the Ad calls with video custom parameters
+
+            if (debug) {
+                console.log("Player's playlist loaded. Advertising: ", jwplayer.defaults.advertising);
+            }
+
+            var currentPlaylistItem = item.item; // remember, it's always a playlist of just 1 item
+
+            // first of all, setup the advertising
+            //var custom_ad_tag = parent_domain + '/' + currentPlaylistItem.custom_ad_tag;
+            var custom_ad_tag = 'embed/' + partner_id + '/' + currentPlaylistItem.custom_ad_tag;
+            var publisher_custom_ad_tag = currentPlaylistItem.custom_ad_tag;
+
+            var no_ads_tag = "";
+            if (publisher_config.allow_ads == 'no' || partner_config.allow_ads == 'no') no_ads_tag = '%26no_ads%3Dtrue';
+            if (parent_domain == 'procms.dugout.com' || parent_domain == 'dailydev.dugout.com' || parent_domain == 'partners.dugout.com') no_ads_tag = '%26no_ads%3Dtrue';
+            if (currentPlaylistItem.allow_ads == 'no') no_ads_tag = '%26no_ads%3Dtrue';
+
+            if (debug) console.log('no_ads_tag: ', no_ads_tag);
+
+            if (no_ads_tag != "") jwplayer.defaults.advertising.schedule[0].tag = "";
+
+            if (jwplayer.defaults.hasOwnProperty('advertising') &&
+                jwplayer.defaults.advertising.hasOwnProperty('schedule')) {
+
+                // if Player has advertising enabled
+                if (debug) console.log('AdSchedule enabled');
+                var dfp_tag = jwplayer.defaults.advertising.schedule[0].tag;
+                if (dfp_tag.constructor === Array) {
+                    dfp_tag = dfp_tag[0];
+                    jwplayer.defaults.advertising.schedule[0].tag[0] = dfp_tag.replace(new RegExp(old_tag, 'g'), custom_ad_tag).replace(new RegExp(embed_dfp_tag, 'g'), partner_id).replace(new RegExp(producer_dfp_tag, 'g'), publisher_id) + no_ads_tag;
+                } else {
+                    jwplayer.defaults.advertising.schedule[0].tag = dfp_tag.replace(new RegExp(old_tag, 'g'), custom_ad_tag).replace(new RegExp(embed_dfp_tag, 'g'), partner_id).replace(new RegExp(producer_dfp_tag, 'g'), publisher_id) + no_ads_tag;
+                }
+
+                if (debug) {
+                    console.log("DFP tag before:", dfp_tag);
+                    console.log("DFP tag after:", jwplayer.defaults.advertising.schedule[0].tag);
+                }
+            } else if (debug) console.log('AdSchedule not available');
+
+
+            // now populate the app shell
+            $("title", "head").text(currentPlaylistItem.title + " | Dugout.com");
+            // remove splash screen
+            $('#splash').css('display', 'none');
+        }
+
+
+        // HELPER FUNCTIONS
+
+        // this function just parses the URL parameters and returns an array for easier access
+        function parse_query_string(query) {
+            var vars = query.split("&");
+            var query_string = {};
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                var key = decodeURIComponent(pair[0]);
+                var value = decodeURIComponent(pair[1]);
+                // If first entry with this name
+                if (typeof query_string[key] === "undefined") {
+                    query_string[key] = decodeURIComponent(value);
+                    // If second entry with this name
+                } else if (typeof query_string[key] === "string") {
+                    var arr = [query_string[key], decodeURIComponent(value)];
+                    query_string[key] = arr;
+                    // If third or later entry with this name
+                } else {
+                    query_string[key].push(decodeURIComponent(value));
+                }
+            }
+            return query_string;
+        }
+
+        function extractHostname(url) {
+            var hostname;
+            //find & remove protocol (http, ftp, etc.) and get hostname
+
+            if (url.indexOf("//") > -1) {
+                hostname = url.split('/')[2];
+            } else {
+                hostname = url.split('/')[0];
+            }
+
+            //find & remove port number
+            hostname = hostname.split(':')[0];
+            //find & remove "?"
+            hostname = hostname.split('?')[0];
+
+            return hostname;
+        }
+
+        // To address those who want the "root domain," use this function:
+        function extractRootDomain(url) {
+            var domain = extractHostname(url),
+                splitArr = domain.split('.'),
+                arrLen = splitArr.length;
+
+            //extracting the root domain here
+            //if there is a subdomain
+            if (arrLen > 2) {
+                domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1];
+                //check to see if it's using a Country Code Top Level Domain (ccTLD) (i.e. ".me.uk")
+                if (splitArr[arrLen - 2].length == 2 && splitArr[arrLen - 1].length == 2) {
+                    //this is using a ccTLD
+                    domain = splitArr[arrLen - 3] + '.' + domain;
+                }
+            }
+            return domain;
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: white;
+        }
+
+        #splash {
+            overflow-y: hidden;
+        }
+
+        #splash-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="player"></div>
 </body>
+
 </html>

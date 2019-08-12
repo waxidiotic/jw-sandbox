@@ -123,7 +123,7 @@
 
             if (url_params.hasOwnProperty('partner')) {
                 try {
-                    params = JSON.parse(atob(url_params.p));
+                    params = JSON.parse(atob(url_params.partner));
                 } catch (e) {
                     console.log('Error parsing input');
                     return false;

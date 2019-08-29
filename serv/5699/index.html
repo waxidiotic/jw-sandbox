@@ -1,57 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<!-- This is my personal cloud-hosted player link, so it will stop working for you. Please put your cloud-hosted link below -->
-<script src='https://content.jwplatform.com/libraries/Z79JsmAO.js'></script>
-<!-- This is my personal cloud-hosted player link, so it will stop working for you. Please put your cloud-hosted link above -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>SERV-5699 - startOnSeek</title>
 </head>
 <body>
-
-I use the on('time') event handler to constantly write the position value to a local storage cookie for each unique media ID. When a new video is loaded in the player (or the page is refreshed) I check if a cookie exists for the media ID. If the cookie is found, then I display buttons to the viewer so they can decide to resume or start from the beginning.<br><br>
-<div id='videoPlayer'></div><br><br>
-<div id='companion'></div>
-<script type='text/javascript'>
-
-jwplayer('videoPlayer').setup({
-	playlist: 'https://cdn.jwplayer.com/v2/media/PehsHgRE',
-	advertising: {
-		client: 'vast',
-		schedule: {
-			pre: {
-				offset: 'pre',
-				tag: 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator=__timestamp__'
-			},
-			mid1: {
-				offset: '300',
-				tag: 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/6062/iab_vast_samples/skippable&ciu_szs=300x250,728x90&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=__timestamp__'
-			},
-			mid2: {
-				offset: '600',
-				tag:'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=__timestamp__'
-			},
-			post: {
-				offset: 'post',
-				tag: 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=__timestamp__'
+	<div id="myElement"></div>
+	<script>
+		function calculateStartTime() {
+			if (localStorage['jwplayer.starttime']) {
+				return localStorage['jwplayer.starttime'];
 			}
-		},
-        rules: {
-            startOnSeek: 'pre'
-        }
-	}
-}).on('time',function(){
-	//set the value of the local storage cookie specific for this media ID
-	localStorage['jwplayer.'+jwplayer().getPlaylistItem().mediaid] = jwplayer().getPosition()
-}).on('playlistItem',function(){
-	//check if the local storage cookie exists for this mediaID
-	//if it is found, display the buttons with the previous position in the seek() call
-	if (localStorage['jwplayer.'+jwplayer().getPlaylistItem().mediaid]) {
-		var cookieValue = localStorage['jwplayer.'+jwplayer().getPlaylistItem().mediaid];
-		document.getElementById('companion').innerHTML = "<input type=button value='Start over' onClick='jwplayer().seek(0);';><br><br><input type=button value='Resume playback' onClick='jwplayer().seek("+cookieValue+");';>";
-	} else {
-		console.log("No cookie found for "+jwplayer().getPlaylistItem().mediaid);
-		document.getElementById('companion').innerHTML = "";
-	}
-});
-</script>
+		}
+
+		const playerInstance = jwplayer('myElement');
+		playerInstance.setup({
+			playlist: [{
+				file: '//cdn.jwplayer.com/manifests/PehsHgRE.m3u8',
+				starttime: calculateStartTime()
+			}],
+			advertising: {
+				client: 'vast',
+				schedule: {
+					pre: {
+						offset: 'pre',
+						tag: '//playertest.longtailvideo.com/pre.xml'
+					},
+					mid: {
+						offset: '50%',
+						tag: '//playertest.longtailvideo.com/mid.xml'
+					}
+				},
+				rules: {
+					startOnSeek: 'pre'
+				}
+			}
+		}).on('time', function(evt) {
+			localStorage['jwplayer.starttime'] = evt.position;
+		});
+	</script>
 </body>
 </html>

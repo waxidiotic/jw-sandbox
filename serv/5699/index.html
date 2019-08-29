@@ -13,7 +13,7 @@
 	<script>
 		function calculateStartTime() {
 			if (localStorage['jwplayer.starttime']) {
-				return localStorage['jwplayer.starttime'];
+				return Number(localStorage['jwplayer.starttime']);
 			}
 		}
 

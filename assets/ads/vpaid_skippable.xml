@@ -1,0 +1,112 @@
+<VAST version="3.0">
+    <Ad id="1234567">
+        <InLine>
+            <AdSystem>Ad System</AdSystem>
+            <AdTitle>VPAID 2 Linear - Skippable</AdTitle>
+            <Description>Skippable Test Ad</Description>
+            <Creatives>
+                <Creative sequence="1">
+                    <Linear>
+                        <Duration>00:00:30</Duration>
+                        <TrackingEvents>
+                            <Tracking event="start">
+                                <URL>
+                                    <![CDATA[ //localhost/log?start ]]>
+                                </URL>
+                            </Tracking>
+                            <Tracking event="firstQuartile">
+                                <URL>
+                                    <![CDATA[ //localhost/log?firstQuartile ]]>
+                                </URL>
+                            </Tracking>
+                            <Tracking event="midpoint">
+                                <URL>
+                                    <![CDATA[ //localhost/log?midpoint ]]>
+                                </URL>
+                            </Tracking>
+                            <Tracking event="thirdQuartile">
+                                <URL>
+                                    <![CDATA[ //localhost/log?thirdQuartile ]]>
+                                </URL>
+                            </Tracking>
+                            <Tracking event="complete">
+                                <URL>
+                                    <![CDATA[ //localhost/log?complete ]]>
+                                </URL>
+                            </Tracking>
+                            <Tracking event="mute">
+                                <URL>
+                                    <![CDATA[ //localhost/log?mute ]]>
+                                </URL>
+                            </Tracking>
+                            <Tracking event="unmute">
+                                <URL>
+                                    <![CDATA[ //localhost/log?unmute ]]>
+                                </URL>
+                            </Tracking>
+                            <Tracking event="rewind">
+                                <URL>
+                                    <![CDATA[ //localhost/log?rewind ]]>
+                                </URL>
+                            </Tracking>
+                            <Tracking event="pause">
+                                <URL>
+                                    <![CDATA[ //localhost/log?pause ]]>
+                                </URL>
+                            </Tracking>
+                            <Tracking event="resume">
+                                <URL>
+                                    <![CDATA[ //localhost/log?resume ]]>
+                                </URL>
+                            </Tracking>
+                            <Tracking event="fullscreen">
+                                <URL>
+                                    <![CDATA[ //localhost/log?fullscreen ]]>
+                                </URL>
+                            </Tracking>
+                            <Tracking event="creativeView">
+                                <URL>
+                                    <![CDATA[ //localhost/log?creativeView ]]>
+                                </URL>
+                            </Tracking>
+                            <Tracking event="acceptInvitation">
+                                <URL>
+                                    <![CDATA[ //localhost/log?acceptInvitation ]]>
+                                </URL>
+                            </Tracking>
+                        </TrackingEvents>
+                        <AdParameters>
+              {"videos":[ {"url":"//content.jwplatform.com/videos/AEhg3fFb-bPwArWA4.mp4","mimetype":"video/mp4"}], "overlay": "//qa.jwplayer.com/~alex/pre_300X250.jpg", "attributes": { "companions" : "//qa.jwplayer.com/~alex/pre_300X250.jpg", "desiredBitrate" : 256, "duration" : 30, "expanded" : false, "height" : 0, "icons" : "", "linear" : true, "remainingTime" : 30, "skippableState" : true, "viewMode" : "normal", "width" : 0, "volume" : 1.0 } }
+                        </AdParameters>
+                        <VideoClicks>
+                            <ClickThrough id="GDFP">
+                                <![CDATA[ //google.com ]]>
+                            </ClickThrough>
+                        </VideoClicks>
+                        <MediaFiles>
+                            <MediaFile apiFramework="VPAID" type="application/javascript">
+                                <![CDATA[
+//playertest.longtailvideo.com/vpaid/vpaid_skippablestatechange.js
+]]>
+                            </MediaFile>
+                        </MediaFiles>
+                    </Linear>
+                </Creative>
+                <Creative AdID="601364-Companion">
+                    <CompanionAds>
+                        <Companion id="1" width="300" height="250">
+                            <StaticResource creativeType="image/jpeg">
+                                <![CDATA[ //qa.jwplayer.com/~alex/post_300X250.jpg ]]>
+                            </StaticResource>
+                            <CompanionClickThrough>
+                                <![CDATA[ //jwplayer.com/ ]]>
+                            </CompanionClickThrough>
+                            <AltText/>
+                            <AdParameters/>
+                        </Companion>
+                    </CompanionAds>
+                </Creative>
+            </Creatives>
+        </InLine>
+    </Ad>
+</VAST>

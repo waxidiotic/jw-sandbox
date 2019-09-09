@@ -4,7 +4,7 @@ const CONTENT_SOURCE_ID = '2505935';
 const VIDEO_ID = '5d65afd0be40777b2a3a5d11';
 
 let streamManager;
-const hls = new hls();
+const hls = new Hls();
 let videoElement;
 let clickElement;
 

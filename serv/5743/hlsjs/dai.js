@@ -71,7 +71,6 @@ function loadUrl(url) {
     hls.loadSource(url);
     hls.attachMedia(videoElement);
     hls.on(Hls.Events.MANIFEST_PARSED, function() {
-        console.log('Video Play');
-        videoElement.controls = true;
+        console.log('Manifest Parsed');
     });
 }

@@ -72,6 +72,6 @@ function loadUrl(url) {
     hls.attachMedia(videoElement);
     hls.on(Hls.Events.MANIFEST_PARSED, function() {
         console.log('Video Play');
-        videoElement.play();
+        videoElement.controls = true;
     });
 }

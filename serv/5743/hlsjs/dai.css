@@ -19,3 +19,8 @@
     top: 0px;
     left: 0px;
 }
+
+.playButton {
+    position: absolute;
+    top: 400px;
+}

@@ -23,4 +23,5 @@
 .playButton {
     position: absolute;
     top: 400px;
+    display: none;
 }

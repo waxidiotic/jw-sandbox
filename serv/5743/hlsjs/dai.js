@@ -70,7 +70,12 @@ function loadUrl(url) {
     console.log('Loading:' + url);
     hls.loadSource(url);
     hls.attachMedia(videoElement);
+    var playButton = document.getElementById('play');
+    playButton.addEventListener('click', function() {
+        videoElement.play();
+    });
     hls.on(Hls.Events.MANIFEST_PARSED, function() {
         console.log('Manifest Parsed');
+        playButton.style.display = 'block';
     });
 }

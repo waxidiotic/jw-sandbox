@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SERV-5687</title>
+    <style>
+        .container {
+            max-width: 50vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="myElement"></div>
+    </div>
+    <script>
+        const playerInstance = jwplayer('myElement');
+        playerInstance.setup({
+            "file": "http://content.bitsontherun.com/videos/bkaovAYt-52qL9xLP.mp4",
+            "width": "100%",
+            "aspectratio": "16:9"
+        });
+    </script>
+</body>
+</html>

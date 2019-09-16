@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SERV-5542</title>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.5.4/shaka-player.compiled.debug.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.5.2/shaka-player.ui.debug.js"></script>
+</head>
+<body>
+  <div id="container">
+    <video id="video"
+      width="640"
+      poster="//shaka-player-demo.appspot.com/assets/poster.jpg"
+      controls autoplay>
+    </video>
+  </div>
+  <script>
+    var manifestUri = 'https://dgem3dzhveq2x.cloudfront.net/public/test6/main.mpd';
+    // var licenseServerUri = 'https://wv-keyos.licensekeyserver.com';
+
+    function initApp() {
+      // Install built-in polyfills to patch browser incompatibilities.
+      shaka.polyfill.installAll();
+
+      // Check to see if the browser supports the basic APIs Shaka needs.
+      if (shaka.Player.isBrowserSupported()) {
+        // Everything looks good!
+        initPlayer();
+      } else {
+        // This browser does not have the minimum set of APIs we need.
+        console.error('Browser not supported!');
+      }
+    }
+
+    async function initPlayer() {
+      // Create a Player instance.
+      var video = document.getElementById('video');
+      var videoContainer = document.getElementById('container');
+      var player = new shaka.Player(video);
+      var config = {
+        overflowMenuButtons: ['quality']
+      };
+      const ui = new shaka.ui.Overlay(player, videoContainer, video, config);
+      var controls = ui.getControls();
+
+      // Attach player to the window to make it easy to access in the JS console.
+      window.player = player;
+
+      // Listen for error events.
+      player.addEventListener('error', onErrorEvent);
+
+      //DRM
+    //   player.configure({
+    //     drm: {
+    //       servers: { 'com.widevine.alpha': licenseServerUri }
+    //     }
+    //   });
+
+    //   player.getNetworkingEngine().registerRequestFilter(function(type, request) {
+    //     if (type == shaka.net.NetworkingEngine.RequestType.LICENSE) {
+    //       request.headers['customData'] = 'PEtleU9TQXV0aGVudGljYXRpb25YTUw+CjxEYXRhPgogIDxHZW5lcmF0aW9uVGltZT4yMDE5LTA4LTAxIDExOjMyOjA0Ljg5OTwvR2VuZXJhdGlvblRpbWU+CiAgPEV4cGlyYXRpb25UaW1lPjIwMTktMDgtMzEgMTE6MzI6MDQuOTAxPC9FeHBpcmF0aW9uVGltZT4KICA8VW5pcXVlSWQ+NDg3ZjdiMjJmNjgzMTJkMmMxYmJjOTNiMWFlYTQ0NWI8L1VuaXF1ZUlkPgogIDxSU0FQdWJLZXlJZD4xODU0YmEzMjVjMGZiZTE0NDc3Nzk1ZmI3MGVlZjlmNTwvUlNBUHViS2V5SWQ+CiAgPFdpZGV2aW5lUG9saWN5IGZsX0NhblBsYXk9InRydWUiIGZsX0NhblBlcnNpc3Q9ImZhbHNlIiAvPgogIDxXaWRldmluZUNvbnRlbnRLZXlTcGVjIFRyYWNrVHlwZT0iSEQiPgogICAgPFNlY3VyaXR5TGV2ZWw+MTwvU2VjdXJpdHlMZXZlbD4KICA8L1dpZGV2aW5lQ29udGVudEtleVNwZWM+CiAgPEZhaXJQbGF5UG9saWN5IHBlcnNpc3RlbnQ9ImZhbHNlIiAvPgogIDxMaWNlbnNlIHR5cGU9InNpbXBsZSIgLz4KPC9EYXRhPgo8U2lnbmF0dXJlPlV0bzdWYld3aHBKOHJSL0FhbytZTHB1aEVFVzVWVFlwMm5FM0pFWXhObC8xUWhRUEdpUFVpTGxuUFhsMUZRTk1ZTlo5MFpxV3lUMTV0dnZmVTEvbDBuVDROeFJRcDVQUHp6M2lSejJYVnIxWkN4SmdmN21takZ5Z0dXaWxsRVZJTngyZ243VGFOWlMyNWVCNDJtbGNJNHFDUFo1OEUzeW11Z0JHemEyZVdEVVV2Y0pXZktjRStleHNPTSs3WjUvM3krQVY5UGxLeUp3Q0EyOWw3K3ZHRHRGMXVGc29RcFE1THhQZERvNk16R1pPcFh5RGxhenRPMGVTMVVUemtkdkhHei9vM2NGTGtPWVAzYjJwbU12NWk3ay9HRSt2QkpTMVplalE2OTlOVW1pa3o0L2c5bjJ5V21zZkI0T0Z4eGNWTkZidll4bXpmYTFyMFJxekNxOWk0UT09PC9TaWduYXR1cmU+CjwvS2V5T1NBdXRoZW50aWNhdGlvblhNTD4=';
+    //     }
+    //   });
+
+      // Try to load a manifest.
+      // This is an asynchronous process.
+      try {
+        player.load(manifestUri);
+      } catch (err) {
+        onError(err);
+      }
+    }
+
+    function onErrorEvent(event) {
+      // Extract the shaka.util.Error object from the event.
+      onError(event.detail);
+    }
+
+    function onError(error) {
+      // Log the error.
+      console.error('Error code', error.code, 'object', error);
+    }
+
+    document.addEventListener('shaka-ui-loaded', initApp);
+  </script>
+</body>
+</html>

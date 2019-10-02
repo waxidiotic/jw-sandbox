@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SERV-5899</title>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.5.4/shaka-player.compiled.debug.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.5.3/shaka-player.ui.debug.js"></script>
+</head>
+<body>
+  <div id="container">
+    <video id="video"
+      width="640"
+      poster="//shaka-player-demo.appspot.com/assets/poster.jpg"
+      controls autoplay>
+    </video>
+  </div>
+  <script>
+    var manifestUri = 'https://frndlytvvideos.akamaized.net/ondemand_test/vubiquity/drm3/stream.mpd';
+    var licenseServerUri = 'https://wv.service.expressplay.com/hms/wv/rights/?ExpressPlayToken=BQAAABgmKfEAAAAAAGCy_WO4xcAmrmKjogGVSnt8Fs8Y79nhAVpW3LI1zjO7uwKHnqOuJ5JR3rSZAIOT50Ct3Q68JZDtdu5U1prS9J818SNCzW3pFTLDu3-Bg8joAggu5zptEitgUVd7ViUS9vnV1Glq-EnStO19dfdTptuPfcdozA';
+
+    function initApp() {
+      // Install built-in polyfills to patch browser incompatibilities.
+      shaka.polyfill.installAll();
+
+      // Check to see if the browser supports the basic APIs Shaka needs.
+      if (shaka.Player.isBrowserSupported()) {
+        // Everything looks good!
+        initPlayer();
+      } else {
+        // This browser does not have the minimum set of APIs we need.
+        console.error('Browser not supported!');
+      }
+    }
+
+    async function initPlayer() {
+      // Create a Player instance.
+      var video = document.getElementById('video');
+      var videoContainer = document.getElementById('container');
+      var player = new shaka.Player(video);
+      var config = {
+        overflowMenuButtons: ['quality']
+      };
+      const ui = new shaka.ui.Overlay(player, videoContainer, video, config);
+      var controls = ui.getControls();
+
+      // Attach player to the window to make it easy to access in the JS console.
+      window.player = player;
+
+      // Listen for error events.
+      player.addEventListener('error', onErrorEvent);
+
+      //DRM
+      player.configure({
+        drm: {
+          servers: { 'com.widevine.alpha': licenseServerUri }
+        }
+      });
+
+      // Try to load a manifest.
+      // This is an asynchronous process.
+      try {
+        player.load(manifestUri);
+      } catch (err) {
+        onError(err);
+      }
+    }
+
+    function onErrorEvent(event) {
+      // Extract the shaka.util.Error object from the event.
+      onError(event.detail);
+    }
+
+    function onError(error) {
+      // Log the error.
+      console.error('Error code', error.code, 'object', error);
+    }
+
+    document.addEventListener('shaka-ui-loaded', initApp);
+  </script>
+</body>
+</html>

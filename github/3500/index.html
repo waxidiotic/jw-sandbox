@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GitHub #3500</title>
+  <style>
+    .jw-iframe {
+      width: 1280;
+      height: 720;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+    const iframe = document.createElement('iframe');
+    iframe.setAttribute('scrolling', 'no');
+    iframe.setAttribute('frameborder', '0');
+    iframe.classList.add('jw-iframe');
+
+    const idocument = iframe.contentDocument;
+    idocument.open();
+    idocument.write('<!DOCTYPE html>');
+    idocument.write("<html>");
+    idocument.write("<head></head>");
+    idocument.write("<body>this is the iframe</body>");
+    idocument.write("</html>");
+    idocument.close();
+  </script>
+</body>
+</html>

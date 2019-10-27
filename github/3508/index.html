@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GitHub #3508</title>
+  <script src="https://cdn.jwplayer.com/libraries/GCSf7mm7.js"></script>
+</head>
+<body>
+  <div id="myElement"></div>
+  <script>
+    const playerInstance = jwplayer('myElement');
+    playerInstance.setup({
+      "file": "http://content.bitsontherun.com/videos/bkaovAYt-52qL9xLP.mp4",
+      "image": "http://content.bitsontherun.com/thumbs/bkaovAYt-720.jpg",
+      "tracks": [
+        {
+          "file": "//playertest.longtailvideo.com/assets/os/captions/bunny-en.vtt",
+          "label": "English",
+          "kind": "captions"
+        }
+      ]
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SERV-6218</title>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.5.4/shaka-player.compiled.debug.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.5.5/shaka-player.ui.debug.js"></script>
+</head>
+<body>
+  <div id="container">
+    <video id="video"
+      width="640"
+      poster="//shaka-player-demo.appspot.com/assets/poster.jpg"
+      controls autoplay>
+    </video>
+  </div>
+  <script>
+    var manifestUri = 'https://814bffb9b389f652.mediapackage.ap-southeast-2.amazonaws.com/out/v1/e38fd01d0d804628b267b33842209416/manifest.mpd';
+    var licenseServerUri = 'https://drm-widevine-licensing.axprod.net/AcquireLicense';
+
+    function initApp() {
+      // Install built-in polyfills to patch browser incompatibilities.
+      shaka.polyfill.installAll();
+
+      // Check to see if the browser supports the basic APIs Shaka needs.
+      if (shaka.Player.isBrowserSupported()) {
+        // Everything looks good!
+        initPlayer();
+      } else {
+        // This browser does not have the minimum set of APIs we need.
+        console.error('Browser not supported!');
+      }
+    }
+
+    async function initPlayer() {
+      // Create a Player instance.
+      var video = document.getElementById('video');
+      var videoContainer = document.getElementById('container');
+      var player = new shaka.Player(video);
+      var config = {
+        overflowMenuButtons: ['quality']
+      };
+      const ui = new shaka.ui.Overlay(player, videoContainer, video, config);
+      var controls = ui.getControls();
+
+      // Attach player to the window to make it easy to access in the JS console.
+      window.player = player;
+
+      // Listen for error events.
+      player.addEventListener('error', onErrorEvent);
+
+      //DRM
+      player.configure({
+        drm: {
+          servers: { 'com.widevine.alpha': licenseServerUri }
+        }
+      });
+
+      player.getNetworkingEngine().registerRequestFilter(function(type, request) {
+        if (type == shaka.net.NetworkingEngine.RequestType.LICENSE) {
+          request.headers['X-AxDRM-Message'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXJzaW9uIjoxLCJjb21fa2V5X2lkIjoiM0NEMkY3QjEtQzNBOC00MjJBLTk0OTctQTdCNzAwN0Q3RkI1IiwibWVzc2FnZSI6eyJ0eXBlIjoiZW50aXRsZW1lbnRfbWVzc2FnZSIsImV4cGlyYXRpb25fZGF0ZSI6IjIwMTktMTItMDFUMDQ6NTY6MDAuMjc2WiIsImtleXMiOlt7ImlkIjoiMDNCNDdDOEUtNUJERi00MUNCLUJCRUYtMjlCRTZBMThERTlFIn1dfSwiZXhwaXJhdGlvbl9kYXRlIjoiMjAxOS0xMi0wMVQwNDo1NjowMC4yNzZaIn0.3YAFDRyjQmiobtF6bz0R6HjK1DK29mioEodCr0FvjlY';
+        }
+      });
+
+      // Try to load a manifest.
+      // This is an asynchronous process.
+      try {
+        player.load(manifestUri);
+      } catch (err) {
+        onError(err);
+      }
+    }
+
+    function onErrorEvent(event) {
+      // Extract the shaka.util.Error object from the event.
+      onError(event.detail);
+    }
+
+    function onError(error) {
+      // Log the error.
+      console.error('Error code', error.code, 'object', error);
+    }
+
+    document.addEventListener('shaka-ui-loaded', initApp);
+  </script>
+</body>
+</html>

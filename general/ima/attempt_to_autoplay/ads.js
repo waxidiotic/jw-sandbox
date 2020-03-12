@@ -118,7 +118,7 @@ function autoplayChecksResolved() {
   //     'sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&' +
   //     'impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&' +
   //     'cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator=';
-  adsRequest.adTagUrl = 'https://rtr.innovid.com/r1.5c0fb0a1482927.53147076;cb=1262774251';
+  adsRequest.adTagUrl = 'https://search.spotxchange.com/ad/vast.html?key=eyJob3N0IjoiZmUwNTguc3BvdHguaWFkMDIucG9wIiwiY2hhbm5lbCI6IjIxOTE3NyIsInB1YiI6Ijg4Mzc5IiwiZ3VpZCI6ImIwMjUzZWY5NjQ3NjExZWFiODFlMTJmYzMwYmYwMDAzLToxNTkzYi4yYzhmNi5iZDkwOiIsInR0bCI6MTU4NDAzNzk1MSwidiI6IjIuMCIsImJDb3JzIjp0cnVlLCJoYXNoIjoiMzg5MGQzNWU2YzBiNThiMzdlZjEwOTU4NDAyYTA4Mzk4Mzk5NDM3ZjA2Y2Q0MmNhZmI2NTlhNzI4YWYwZGE3NyJ9&cust_params=';
 
   // Specify the linear and nonlinear slot sizes. This helps the SDK to
   // select the correct creative if multiple are returned.
